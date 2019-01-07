@@ -1,0 +1,11 @@
+include ':app'
+include ':annotation'
+include ':lib'
+include ':apt'
+
+include ':module_a'
+project(':module_a').projectDir = new File(rootDir, 'component/module_a')
+include ':module_b'
+project(':module_b').projectDir = new File(rootDir, 'component/module_b')
+include ':module_service'
+project(':module_service').projectDir = new File(rootDir, 'component/module_service')
