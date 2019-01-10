@@ -20,8 +20,24 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".Main2Activity"
+                android:name=".test.Main2Activity"
                 android:label="Test/Main2Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".mvp.demo.LoginActivity"
+                android:label="MVP/LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".arouter.ARouterActivity"
+                android:label="ARouter/ARouterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>

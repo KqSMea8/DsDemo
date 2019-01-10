@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.dryseed.module_recyclerview">
+    <application>
+        <activity
+                android:name=".TestRecyclerViewActivity"
+                android:label="RecyclerView/TestRecyclerViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".sticky.TestStickyRecyclerViewActivity"
+                android:label="RecyclerView/StickyRecyclerView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

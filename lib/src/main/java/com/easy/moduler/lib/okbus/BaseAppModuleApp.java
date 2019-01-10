@@ -1,8 +1,7 @@
 package com.easy.moduler.lib.okbus;
 
-import android.app.Application;
 import android.content.Intent;
-
+import com.easy.moduler.lib.CommonApplication;
 import com.easy.moduler.lib.Constants;
 import com.easy.moduler.lib.router.IRouterRulesCreator;
 import com.easy.moduler.lib.router.Router;
@@ -13,7 +12,7 @@ import java.util.ServiceLoader;
 /**
  * 组件的独立运行期间的Application,最终打包时根本没有这个类
  */
-public class BaseAppModuleApp extends Application {
+public class BaseAppModuleApp extends CommonApplication {
 
     public BaseModule mBaseModule;
     public static BaseAppModuleApp mBaseAppModuleApp;
@@ -22,6 +21,7 @@ public class BaseAppModuleApp extends Application {
     public void onCreate() {
         super.onCreate();
         mBaseAppModuleApp = this;
+
         //自动注册路由器
         ServiceLoader<IRouterRulesCreator> loader = ServiceLoader.load(IRouterRulesCreator.class);
         for (IRouterRulesCreator aLoader : loader) Router.addRouterRule(aLoader);

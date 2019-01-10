@@ -1,4 +1,4 @@
-package com.easy.moduler.module_a;
+package com.dryseed.module_recyclerview;
 
 import android.os.Message;
 import com.easy.moduler.lib.Constants;
@@ -14,7 +14,7 @@ public class Module extends BaseModule {
 
     @Override
     public void afterConnected() {
-        ServiceBus.getInstance().registerService(Constants.SERVICE_A_UID, new CallBack<String>() {
+        ServiceBus.getInstance().registerService(Constants.SERVICE_RECYCLERVIEW_UID, new CallBack<String>() {
             @Override
             public String onCall(Message msg) {
                 LogUtils.logOnUI(Constants.TAG, "afterConnected  a 进程收到[服务请求]消息:ServiceMessage-->hello:  " + Integer.toHexString(Math.abs(msg.what)));
@@ -25,7 +25,7 @@ public class Module extends BaseModule {
 
     @Override
     public int getModuleId() {
-        return Constants.MODULE_A;
+        return Constants.MODULE_RECYCLERVIEW;
     }
 
 }

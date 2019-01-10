@@ -34,13 +34,17 @@ public class Constants {
 
     public static final int MODULE_PRINT_LOG = 0x0001;//log打印事件
 
-
+    // module_a
     public static final int MODULE_A = 0xa;
-    public static final int MODULE_A_EVENT001 = 0xa001;//a模块事件1
+    public static final int MODULE_A_EVENT001 = 0xa001;
 
-
+    // module_b
     public static final int MODULE_B = 0xb;
-    public static final int MODULE_B_EVENT001 = 0xb001;//b模块事件1
+    public static final int MODULE_B_EVENT001 = 0xb001;
+
+    // module_recyclerview
+    public static final int MODULE_RECYCLERVIEW = 0xc;
+    public static final int MODULE_RECYCLERVIEW_EVENT001 = 0xc001;
 
     //==================模块间的服务定义============//
     /**
@@ -51,5 +55,6 @@ public class Constants {
      * 例如  -0xa001表示服务请求  -0xa002表示-0xa001的服务返回
      */
     public static final int SERVICE_A_UID = -0xa001;
+    public static final int SERVICE_RECYCLERVIEW_UID = -0xc001;
 
 }

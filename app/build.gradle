@@ -15,6 +15,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath false
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -23,7 +24,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-    
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,13 +36,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    if (isDebug.toBoolean()) {
-        //调试阶段，只保证基本逻辑不报错
+    if (!includeModule.toBoolean()) {
+        //不包含Module
         implementation project(":lib")
     } else {
-        //打包阶段，才真正的引入业务逻辑模块
+        //引入业务逻辑模块
         implementation project(":module_a")
         implementation project(":module_b")
         implementation project(":module_service")
+        implementation project(":module_recyclerview")
     }
 }

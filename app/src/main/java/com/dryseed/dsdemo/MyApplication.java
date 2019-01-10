@@ -1,13 +1,13 @@
 package com.dryseed.dsdemo;
 
-import android.app.Application;
+import com.easy.moduler.lib.CommonApplication;
 import com.easy.moduler.lib.okbus.IModule;
 import com.easy.moduler.lib.router.IRouterRulesCreator;
 import com.easy.moduler.lib.router.Router;
 
 import java.util.ServiceLoader;
 
-public class MyApplication extends Application {
+public class MyApplication extends CommonApplication {
     @Override
     public void onCreate() {
         super.onCreate();
