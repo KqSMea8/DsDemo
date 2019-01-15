@@ -45,5 +45,6 @@ dependencies {
         implementation project(":module_b")
         implementation project(":module_service")
         implementation project(":module_recyclerview")
+        implementation project(":module_animation")
     }
 }

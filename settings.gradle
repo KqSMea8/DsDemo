@@ -9,7 +9,7 @@ include ':module_b'
 project(':module_b').projectDir = new File(rootDir, 'component/module_b')
 include ':module_service'
 project(':module_service').projectDir = new File(rootDir, 'component/module_service')
-include ':module_service'
-project(':module_service').projectDir = new File(rootDir, 'component/module_service')
 include ':module_recyclerview'
 project(':module_recyclerview').projectDir = new File(rootDir, 'component/module_recyclerview')
+include ':module_animation'
+project(':module_animation').projectDir = new File(rootDir, 'component/module_animation')

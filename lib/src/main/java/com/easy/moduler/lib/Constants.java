@@ -46,6 +46,9 @@ public class Constants {
     public static final int MODULE_RECYCLERVIEW = 0xc;
     public static final int MODULE_RECYCLERVIEW_EVENT001 = 0xc001;
 
+    // module_animation
+    public static final int MODULE_ANIMATION = 0xd;
+
     //==================模块间的服务定义============//
     /**
      * 服务定义规则：
@@ -56,5 +59,6 @@ public class Constants {
      */
     public static final int SERVICE_A_UID = -0xa001;
     public static final int SERVICE_RECYCLERVIEW_UID = -0xc001;
+    public static final int SERVICE_ANIMATION_UID = -0xd001;
 
 }

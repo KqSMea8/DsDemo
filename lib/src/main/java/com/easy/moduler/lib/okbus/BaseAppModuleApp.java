@@ -17,7 +17,10 @@ public class BaseAppModuleApp extends CommonApplication {
     public BaseModule mBaseModule;
     public static BaseAppModuleApp mBaseAppModuleApp;
 
-    @Override//只有当是组建单独运行时，才当Application运行，才会走onCreate,最终打包时根本没有这个类
+    /**
+     * 只有当是组建单独运行时，才当Application运行，才会走onCreate,最终打包时根本没有这个类
+     */
+    @Override
     public void onCreate() {
         super.onCreate();
         mBaseAppModuleApp = this;

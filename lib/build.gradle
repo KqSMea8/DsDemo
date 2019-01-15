@@ -62,4 +62,10 @@ dependencies {
     // ----------------------------------------------------
     api 'com.blankj:utilcode:1.22.1'
 
+    // ----------------------------------------------------
+    // ########## butterknife ##########
+    // https://github.com/JakeWharton/butterknife
+    // ----------------------------------------------------
+    api 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 }

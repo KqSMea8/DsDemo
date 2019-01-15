@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools" package="com.dryseed.module_animation">
+
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity
+                android:name=".MainActivity"
+                android:label="MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".viewAnimator.TestViewAnimatorActivity"
+                android:label="ViewAnimator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".viewPropertyAnimator.TestViewPropertyAnimatorActivity"
+                android:label="ViewPropertyAnimator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
