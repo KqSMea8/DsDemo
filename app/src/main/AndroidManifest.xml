@@ -37,7 +37,15 @@
         </activity>
         <activity
                 android:name=".arouter.ARouterActivity"
-                android:label="ARouter/ARouterActivity">
+                android:label="ARouter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".test.TestActivity"
+                android:label="Test/TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>

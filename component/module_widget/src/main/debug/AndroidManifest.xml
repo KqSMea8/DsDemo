@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.dryseed.module_animation">
+          xmlns:tools="http://schemas.android.com/tools" package="com.dryseed.module_widget">
 
     <application
             android:allowBackup="true"
@@ -22,7 +22,7 @@
 
         </service>
 
-        <activity android:name=".MainActivity">
+        <activity android:name="com.dryseed.module_widget.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,35 +30,19 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".viewAnimator.TestViewAnimatorActivity"
-                android:label="ViewAnimator">
+                android:name="com.dryseed.module_widget.statusbar.TestStatusBarActivity"
+                android:label="StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.ANIMATION"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
             </intent-filter>
         </activity>
         <activity
-                android:name=".viewPropertyAnimator.TestViewPropertyAnimatorActivity"
-                android:label="ViewPropertyAnimator">
+                android:name="com.dryseed.module_widget.statusbar.MyStatusBarActivity"
+                android:label="MyStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.ANIMATION"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".valueAnimator.TestValueAnimatorActivity"
-                android:label="ValueAnimator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.ANIMATION"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".objectAnimator.TestObjectAnimatorActivity"
-                android:label="ObjectAnimator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.ANIMATION"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
             </intent-filter>
         </activity>
     </application>

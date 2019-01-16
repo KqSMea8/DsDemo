@@ -1,61 +1,35 @@
 package com.dryseed.dsdemo.test;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.Choreographer;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.dryseed.dsdemo.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.lang.reflect.Field;
 
 /**
  * @author caiminming
  */
-public class TestActivity {
-    public static void main(String[] args) {
-        String today = "2019-01-08";
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
+public class TestActivity extends Activity {
+
+    @BindView(R.id.textview)
+    MyTextView mTextView;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.test_layout);
+        ButterKnife.bind(this);
+
         try {
-            date = format.parse(today);
-        } catch (ParseException e) {
-            e.printStackTrace();
+            Field field = Choreographer.class.getDeclaredField("SKIPPED_FRAME_WARNING_LIMIT");
+            field.setAccessible(true);
+            field.set(Choreographer.class, 0);
+        } catch (Throwable e) {
+
         }
-
-        System.out.println(getDayFromDate(date));
-    }
-
-    public static int getWeekOfYear(Date date) {
-        /*long timeStamp = 1546797722000l;
-        Date date = new Date(timeStamp);*/
-
-        /*String today = "2019-01-07";
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-        try {
-            date = format.parse(today);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setFirstDayOfWeek(Calendar.MONDAY);
-        calendar.setTime(date);
-
-        return calendar.get(Calendar.WEEK_OF_YEAR);
-    }
-
-    /**
-     * 获取当前日期是星期几<br>
-     *
-     * @param date
-     * @return 当前日期是星期几
-     */
-    public static int getDayFromDate(Date date) {
-        int[] weekDays = {7, 1, 2, 3, 4, 5, 6};
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (w < 0)
-            w = 0;
-        return weekDays[w];
     }
 }

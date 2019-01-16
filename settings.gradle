@@ -13,3 +13,5 @@ include ':module_recyclerview'
 project(':module_recyclerview').projectDir = new File(rootDir, 'component/module_recyclerview')
 include ':module_animation'
 project(':module_animation').projectDir = new File(rootDir, 'component/module_animation')
+include ':module_widget'
+project(':module_widget').projectDir = new File(rootDir, 'component/module_widget')

@@ -27,6 +27,22 @@
                 <category android:name="com.dryseed.dsdemo.TEST"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".valueAnimator.TestValueAnimatorActivity"
+                android:label="ValueAnimator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".objectAnimator.TestObjectAnimatorActivity"
+                android:label="ObjectAnimator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
