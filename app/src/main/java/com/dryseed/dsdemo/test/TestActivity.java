@@ -2,11 +2,13 @@ package com.dryseed.dsdemo.test;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.Choreographer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.dryseed.dsdemo.R;
+import com.easy.moduler.lib.utils.LogUtils;
 
 import java.lang.reflect.Field;
 
@@ -31,5 +33,17 @@ public class TestActivity extends Activity {
         } catch (Throwable e) {
 
         }
+
+        //demo1 : 0 0
+        LogUtils.d("demo1 : " + mTextView.getWidth() + " " + mTextView.getHeight());
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                //demo2 : 200 100
+                LogUtils.d("demo2 : " + mTextView.getWidth() + " " + mTextView.getHeight());
+            }
+        });
     }
+
 }

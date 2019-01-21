@@ -11,35 +11,29 @@ import java.util.Date;
  */
 public class Test {
     public static void main(String[] args) {
-        String today = "2019-01-08";
+        long currentTimeMillis = System.currentTimeMillis();
+        System.out.println(currentTimeMillis);
+        Date date = new Date(currentTimeMillis);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.setTime(date);
+        int curWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        System.out.println(curWeekOfYear);
+    }
+
+    public static int getWeekOfYear(long time) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String d = format.format(time);
         Date date = null;
         try {
-            date = format.parse(today);
+            date = format.parse(d);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        System.out.println(getDayFromDate(date));
-    }
-
-    public static int getWeekOfYear(Date date) {
-        /*long timeStamp = 1546797722000l;
-        Date date = new Date(timeStamp);*/
-
-        /*String today = "2019-01-07";
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
-        try {
-            date = format.parse(today);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }*/
-
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTime(date);
-
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 

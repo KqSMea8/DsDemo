@@ -2,114 +2,51 @@ package com.easy.moduler.lib.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.easy.moduler.lib.Constants;
 import com.easy.moduler.lib.okbus.BaseAppModuleApp;
 import com.easy.moduler.lib.okbus.OkBus;
 
 
 public class LogUtils {
-
+    private static final String TAG = "MMM";
     private static boolean isDebug = true;
 
-    static String mTag = "LogUtils";
-
-    //for error log
-    public static void error(String msg) {
-        if (isDebug) {
-            Log.e(mTag, msg);
-        }
+    public static boolean isDebug() {
+        return true;
     }
 
-    //for warming log
-    public static void warn(String msg) {
-        if (isDebug) {
-            Log.w(mTag, msg);
-        }
+    public static void d(String msg, Object... objects) {
+        Log.d(TAG, String.format(msg, objects));
     }
 
-    //for info log
-    public static void info(String msg) {
-        if (isDebug) {
-            Log.i(mTag, msg);
-        }
+    public static void d(String msg) {
+        Log.d(TAG, msg);
     }
 
-    //for debug log
-    public static void debug(String msg) {
-        if (isDebug) {
-            Log.d(mTag, msg);
-        }
+    public static void d(String tag, String msg) {
+        Log.d(tag, msg);
     }
 
-    //for verbose log
-    public static void verbose(String msg) {
-        if (isDebug) {
-            Log.v(mTag, msg);
-        }
-    }
-
-    //for error log
-    public static void e(String msg) {
-        if (isDebug) {
-            Log.e(mTag, msg);
-        }
-    }
-
-    //for warming log
-    public static void w(String msg) {
-        if (isDebug) {
-            Log.w(mTag, msg);
-        }
-    }
-
-    //for info log
     public static void i(String msg) {
-        if (isDebug) {
-            Log.i(mTag, msg);
-        }
+        Log.i(TAG, msg);
     }
 
-    //for debug log
-    public static void logOnUI(String msg) {
-        if (isDebug) {
-            Log.d(mTag, msg);
-        }
-    }
-
-    //for verbose log
-    public static void v(String msg) {
-        if (isDebug) {
-            Log.v(mTag, msg);
-        }
-    }
-
-
-    //for warming log
-    public static void w(String tag, String msg) {
-        if (isDebug) {
-            if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
-            }
-            Log.w(tag, msg);
-        }
-    }
-
-    //for info log
     public static void i(String tag, String msg) {
-        if (isDebug) {
-            if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
-            }
-            Log.i(tag, msg);
-        }
+        Log.i(tag, msg);
     }
 
-    //for debug log
+    public static void e(String msg) {
+        Log.e(TAG, msg);
+    }
+
+    public static void e(String tag, String msg) {
+        Log.e(tag, msg);
+    }
+
     public static void logOnUI(String tag, String msg) {
         if (isDebug) {
             if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
+                tag = TAG;
             }
             Log.d(tag, msg);
             if (TextUtils.equals(tag, Constants.TAG)) {
@@ -125,44 +62,6 @@ public class LogUtils {
         }
     }
 
-    //for debug log
-    public static void d(String tag, String msg) {
-        if (isDebug) {
-            if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
-            }
-            Log.d(tag, msg);
-        }
-    }
-
-    //for verbose log
-    public static void v(String tag, String msg) {
-        if (isDebug) {
-            if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
-            }
-            Log.v(tag, msg);
-        }
-    }
-
-    //for verbose log
-    public static void e(String tag, String msg) {
-        if (isDebug) {
-            if (tag == null || "".equalsIgnoreCase(tag.trim())) {
-                tag = mTag;
-            }
-            Log.e(tag, msg);
-        }
-    }
-
-    public static void setDebug(boolean isDebug) {
-        LogUtils.isDebug = isDebug;
-    }
-
-    public static boolean isDebug() {
-        return isDebug;
-    }
-
     /**
      * 点击Log跳转到指定源码位置
      *
@@ -171,7 +70,7 @@ public class LogUtils {
      */
     public static void showLog(String tag, String msg) {
         if (isDebug && !TextUtils.isEmpty(msg)) {
-            if (TextUtils.isEmpty(tag)) tag = mTag;
+            if (TextUtils.isEmpty(tag)) tag = TAG;
             StackTraceElement[] stackTraceElement = Thread.currentThread().getStackTrace();
             int currentIndex = -1;
             for (int i = 0; i < stackTraceElement.length; i++) {

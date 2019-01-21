@@ -1,4 +1,4 @@
-package com.dryseed.module_animation.viewAnimator.lib;
+package com.easy.moduler.lib.viewanimator;
 
 import android.view.View;
 

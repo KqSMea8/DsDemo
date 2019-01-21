@@ -9,7 +9,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dryseed.module_animation.R;
-import com.dryseed.module_animation.viewAnimator.lib.ViewAnimator;
+import com.easy.moduler.lib.viewanimator.ViewAnimator;
 import com.easy.moduler.lib.utils.DPIUtil;
 
 /**
@@ -61,4 +61,5 @@ public class TestViewAnimatorActivity extends Activity {
                 .interpolator(new AccelerateDecelerateInterpolator())
                 .start();
     }
+
 }

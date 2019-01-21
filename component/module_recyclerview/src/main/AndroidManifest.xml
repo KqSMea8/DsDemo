@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.dryseed.module_recyclerview">
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application>
         <activity
                 android:name=".TestRecyclerViewActivity"
@@ -12,6 +13,78 @@
         <activity
                 android:name=".sticky.TestStickyRecyclerViewActivity"
                 android:label="RecyclerView/StickyRecyclerView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".multiTypeAdapter.TestMultiTypeAdapterActivity"
+                android:label="RecyclerView/MultiTypeAdapter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".orientationHelper.TestOrientationHelperActivity"
+                android:label="RecyclerView/OrientationHelper">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".scroll.TestRecyclerViewScrollActivity"
+                android:label="RecyclerView/RecyclerViewScrollUtils">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".snapHelper.TestSnapHelperActivity"
+                android:label="RecyclerView/SnapHelper">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".itemTouchHelper.demo1.TestItemTouchHelperActivity"
+                android:label="RecyclerView/ItemTouchHelper1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".itemTouchHelper.demo2.TestItemTouchHelper2Activity"
+                android:label="RecyclerView/ItemTouchHelper2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".itemDecoration.TestItemDecorationActivity"
+                android:label="RecyclerView/ItemDecoration">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".itemDecoration.TestItemDecorationActivity"
+                android:label="RecyclerView/ItemDecoration">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".itemAnimator.TestItemAnimatorActivity"
+                android:label="RecyclerView/ItemAnimator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
