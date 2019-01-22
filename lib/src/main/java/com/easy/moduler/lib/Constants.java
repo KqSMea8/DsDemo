@@ -35,22 +35,25 @@ public class Constants {
     public static final int MODULE_PRINT_LOG = 0x0001;//log打印事件
 
     // module_a
-    public static final int MODULE_A = 0xa;
+    public static final int MODULE_A = 0x0a;
     public static final int MODULE_A_EVENT001 = 0xa001;
 
     // module_b
-    public static final int MODULE_B = 0xb;
+    public static final int MODULE_B = 0x0b;
     public static final int MODULE_B_EVENT001 = 0xb001;
 
     // module_recyclerview
-    public static final int MODULE_RECYCLERVIEW = 0xc;
+    public static final int MODULE_RECYCLERVIEW = 0x0c;
     public static final int MODULE_RECYCLERVIEW_EVENT001 = 0xc001;
 
     // module_animation
-    public static final int MODULE_ANIMATION = 0xd;
+    public static final int MODULE_ANIMATION = 0x0d;
 
     // module_widget
-    public static final int MODULE_WIDGET = 0xe;
+    public static final int MODULE_WIDGET = 0x0e;
+
+    // module_view
+    public static final int MODULE_VIEW = 0x0f;
 
     //==================模块间的服务定义============//
     /**
@@ -60,9 +63,10 @@ public class Constants {
      * 即：   requestID－1 ＝ returnID
      * 例如  -0xa001表示服务请求  -0xa002表示-0xa001的服务返回
      */
-    public static final int SERVICE_A_UID = -0xa001;
-    public static final int SERVICE_RECYCLERVIEW_UID = -0xc001;
-    public static final int SERVICE_ANIMATION_UID = -0xd001;
-    public static final int SERVICE_WIDGET_UID = -0xe001;
+    public static final int SERVICE_A_UID = -0x0a001;
+    public static final int SERVICE_RECYCLERVIEW_UID = -0x0c001;
+    public static final int SERVICE_ANIMATION_UID = -0x0d001;
+    public static final int SERVICE_WIDGET_UID = -0x0e001;
+    public static final int SERVICE_VIEW_UID = -0x0f001;
 
 }

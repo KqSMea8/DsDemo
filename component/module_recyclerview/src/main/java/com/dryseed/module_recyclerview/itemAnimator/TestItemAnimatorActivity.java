@@ -15,13 +15,8 @@ import com.easy.moduler.lib.recyclerview.model.LabelModel;
 import com.easy.moduler.lib.recyclerview.recyclerlistadapter.RecyclerListAdapter;
 import com.easy.moduler.lib.recyclerview.viewholder.LabelViewHolder;
 import com.easy.moduler.lib.test.data.DataGenerator;
-import com.easy.moduler.lib.utils.LogUtils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -65,8 +60,7 @@ public class TestItemAnimatorActivity extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mRecyclerListAdapter);
         //mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        //mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
-        mRecyclerView.setItemAnimator(new SlideScaleInOutRightItemAnimator(mRecyclerView));
+        mRecyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(mRecyclerView));
         mRecyclerListAdapter.setItemList(mData);
     }
 
@@ -97,5 +91,4 @@ public class TestItemAnimatorActivity extends Activity {
         mRecyclerListAdapter.notifyItemRemoved(position);
         mRecyclerListAdapter.notifyItemRangeChanged(position, mData.size() - position);
     }
-
 }

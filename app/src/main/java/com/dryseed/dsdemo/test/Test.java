@@ -1,8 +1,6 @@
 package com.dryseed.dsdemo.test;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,17 +9,23 @@ import java.util.Date;
  */
 public class Test {
     public static void main(String[] args) {
-        long currentTimeMillis = System.currentTimeMillis();
-        System.out.println(currentTimeMillis);
-        Date date = new Date(currentTimeMillis);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setFirstDayOfWeek(Calendar.MONDAY);
-        calendar.setTime(date);
-        int curWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
-        System.out.println(curWeekOfYear);
+        long time1 = 1547999999000l;
+        long time2 = 1547913601000l;
+        long time3 = 1547978401000l;
+        System.out.println(getWeekOfYear(time1));
+        System.out.println(getWeekOfYear(time2));
+        System.out.println(getWeekOfYear(time3));
     }
 
     public static int getWeekOfYear(long time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.clear();
+        calendar.setTimeInMillis(time);
+        return calendar.get(Calendar.WEEK_OF_YEAR);
+    }
+
+    /*public static int getWeekOfYear(long time) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String d = format.format(time);
         Date date = null;
@@ -35,7 +39,7 @@ public class Test {
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTime(date);
         return calendar.get(Calendar.WEEK_OF_YEAR);
-    }
+    }*/
 
     /**
      * 获取当前日期是星期几<br>
