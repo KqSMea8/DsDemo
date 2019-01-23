@@ -55,6 +55,9 @@ public class Constants {
     // module_view
     public static final int MODULE_VIEW = 0x0f;
 
+    // module_uiautomator
+    public static final int MODULE_UIAUTOMATOR = 0x10;
+
     //==================模块间的服务定义============//
     /**
      * 服务定义规则：
@@ -68,5 +71,6 @@ public class Constants {
     public static final int SERVICE_ANIMATION_UID = -0x0d001;
     public static final int SERVICE_WIDGET_UID = -0x0e001;
     public static final int SERVICE_VIEW_UID = -0x0f001;
+    public static final int SERVICE_UIAUTOMATOR_UID = -0x1a001;
 
 }

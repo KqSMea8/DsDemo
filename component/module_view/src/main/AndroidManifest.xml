@@ -25,6 +25,14 @@
                 <category android:name="com.dryseed.dsdemo.TEST"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".dispatchEvent.TestDispatchEventActivity"
+                android:label="View/DispatchEvent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

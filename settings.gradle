@@ -17,3 +17,5 @@ include ':module_widget'
 project(':module_widget').projectDir = new File(rootDir, 'component/module_widget')
 include ':module_view'
 project(':module_view').projectDir = new File(rootDir, 'component/module_view')
+include ':module_uiautomator'
+project(':module_uiautomator').projectDir = new File(rootDir, 'component/module_uiautomator')

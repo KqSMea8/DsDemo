@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.dryseed.module_view">
+          xmlns:tools="http://schemas.android.com/tools" package="com.dryseed.module_uiautomator">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
     <application
@@ -31,27 +31,11 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".motionEvent.TestMotionEventActivity"
-                android:label="MotionEvent">
+                android:name=".TestDsTestActivity"
+                android:label="DsTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.VIEW"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".zoomImage.ZoomImageActivity"
-                android:label="ZoomImage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.VIEW"/>
-            </intent-filter>
-        </activity>
-        <activity
-                android:name=".dispatchEvent.TestDispatchEventActivity"
-                android:label="DispatchEvent">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.dryseed.dsdemo.VIEW"/>
+                <category android:name="com.dryseed.dsdemo.UIAUTOMATOR"/>
             </intent-filter>
         </activity>
     </application>
