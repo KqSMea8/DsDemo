@@ -15,6 +15,10 @@ public class LogUtils {
         return true;
     }
 
+    public static void v(String msg, Object... objects) {
+        Log.v(TAG, String.format(msg, objects));
+    }
+
     public static void d(String msg, Object... objects) {
         Log.d(TAG, String.format(msg, objects));
     }
@@ -33,6 +37,14 @@ public class LogUtils {
 
     public static void i(String tag, String msg) {
         Log.i(tag, msg);
+    }
+
+    public static void w(String msg, Object... objects) {
+        Log.w(TAG, String.format(msg, objects));
+    }
+
+    public static void e(String msg, Object... objects) {
+        Log.d(TAG, String.format(msg, objects));
     }
 
     public static void e(String msg) {
