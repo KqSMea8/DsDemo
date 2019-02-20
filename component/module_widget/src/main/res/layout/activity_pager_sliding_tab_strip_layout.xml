@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:strip="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#eee"
+              android:orientation="vertical">
+
+    <com.dryseed.module_widget.viewPager.pagerSlidingTabStrip.PagerSlidingTabStrip
+            android:id="@+id/tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            strip:pstsDividerColor="@android:color/transparent"
+            strip:pstsIndicatorColor="#f02b2b"
+            strip:pstsIndicatorHeight="3dp"
+            strip:pstsScrollToCenter="true"
+            strip:pstsShouldExpand="true"
+            strip:pstsTabBackground="@android:color/transparent"
+            strip:pstsTabPaddingLeftRight="10dp"
+            strip:pstsUnderlineHeight="0dp"
+            strip:selectedTabTextColor="#f02b2b"/>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewpager;
+package com.dryseed.module_widget.viewPager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

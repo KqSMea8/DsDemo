@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.dryseed.module_widget.viewpager.viewpagerfragment.ViewPagerFragmentActivity"
+                android:name="com.dryseed.module_widget.viewPager.viewPagerFragment.ViewPagerFragmentActivity"
                 android:label="ViewPager/ViewPagerFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -54,8 +54,24 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.dryseed.module_widget.viewpager.nopreloadviewpager.NoPreloadViewPagerActivity"
+                android:name="com.dryseed.module_widget.viewPager.noPreloadViewPager.NoPreloadViewPagerActivity"
                 android:label="ViewPager/NoPreloadViewPager">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.pagerSlidingTabStrip.PagerSlidingTabStripActivity"
+                android:label="ViewPager/PagerSlidingTabStrip">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.advancedPagerSlidingTabStrip.AdvancedPagerSlidingTabStripActivity"
+                android:label="ViewPager/AdvancedPagerSlidingTabStrip">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>

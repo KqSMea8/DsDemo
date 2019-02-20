@@ -1,9 +1,9 @@
-package com.dryseed.module_widget.viewpager.viewpagerfragment;
+package com.dryseed.module_widget.viewPager.viewPagerFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.dryseed.module_widget.viewpager.BaseFragment;
+import com.dryseed.module_widget.viewPager.BaseFragment;
 
 /**
  * @author caiminming

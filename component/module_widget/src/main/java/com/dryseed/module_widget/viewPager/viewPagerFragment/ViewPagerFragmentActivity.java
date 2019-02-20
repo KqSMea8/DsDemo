@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewpager.viewpagerfragment;
+package com.dryseed.module_widget.viewPager.viewPagerFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,5 +31,10 @@ public class ViewPagerFragmentActivity extends FragmentActivity {
     private void initViews() {
         mAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

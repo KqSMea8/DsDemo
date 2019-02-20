@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewpager.nopreloadviewpager;
+package com.dryseed.module_widget.viewPager.noPreloadViewPager;
 
 /*
  * Copyright (C) 2011 The Android Open Source Project
