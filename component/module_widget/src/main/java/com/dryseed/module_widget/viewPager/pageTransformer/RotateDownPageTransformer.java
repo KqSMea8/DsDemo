@@ -1,6 +1,7 @@
 package com.dryseed.module_widget.viewPager.pageTransformer;
 
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -21,10 +22,14 @@ public class RotateDownPageTransformer implements ViewPager.PageTransformer {
 
 
     public void transformPage(View view, float position) {
+
+        Log.e("TAG", view + " , " + position + "");
+
         if (position < -1) {
             // [-Infinity,-1)
             // This page is way off-screen to the left.
             view.setRotation(0);
+
         } else if (position <= 1) {
             // [-1,1]
             // a页滑动至b页 ； a页从 0.0 ~ -1 ；b页从1 ~ 0.0
