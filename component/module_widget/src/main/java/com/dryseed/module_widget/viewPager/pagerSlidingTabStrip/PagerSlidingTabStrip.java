@@ -38,6 +38,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.dryseed.module_widget.R;
+import com.easy.moduler.lib.utils.LogUtils;
 
 import java.util.Locale;
 
@@ -49,9 +50,9 @@ import java.util.Locale;
  * 在视图的底部的全宽度的线pstsunderlineheight高度
  * pstsdividerpadding顶部和底部填充的分频器
  * pststabpaddingleftright左、右填充每个选项卡
- * pstsscrolloffset卷轴被选择的标签的偏移
+ * pstsscrolloffset 距离左边初始位置的距离（即指示器固定会固定在距离左侧多少处）
  * pststabbackground背景绘制的每个标签，应该是一个statelistdrawable
- * pstsshouldexpand如果设置为TRUE，每个标签都给予同样的重量，默认为false
+ * pstsshouldexpand如果设置为TRUE，每个标签都给予同样的重量，默认为false（tab宽度不足以覆盖父布局时，采用的策略）
  * pststextallcaps如果为真，所有选项卡标题都是大写，默认为true
  */
 public class PagerSlidingTabStrip extends HorizontalScrollView {
@@ -271,7 +272,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             }
         });
         tab.setPadding(tabPadding, 0, tabPadding, 0);
-        tabsContainer.addView(tab, position, shouldExpand ? expandedTabLayoutParams : defaultTabLayoutParams);//貌似没区别
+        tabsContainer.addView(tab, position, shouldExpand ? expandedTabLayoutParams : defaultTabLayoutParams);
     }
 
     private void updateTabStyles() {
@@ -321,10 +322,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
         if (position > 0 || offset > 0) {
             newScrollX -= scrollOffset;
+            //LogUtils.d("[newScrollX:%d][scrollOffset:%d]", newScrollX, scrollOffset);
         }
 
         if (newScrollX != lastScrollX) {
             lastScrollX = newScrollX;
+            //移动的是HorizontalScrollView
             scrollTo(newScrollX, 0);
         }
 
@@ -358,6 +361,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             View nextTab = tabsContainer.getChildAt(currentPosition + 1);
             final float nextTabLeft = nextTab.getLeft();
             final float nextTabRight = nextTab.getRight();
+
+            LogUtils.d("[nextTabLeft:%f][nextTabRight:%f]", nextTabLeft, nextTabRight);
 
             lineLeft = (currentPositionOffset * nextTabLeft + (1f - currentPositionOffset) * lineLeft);
             lineRight = (currentPositionOffset * nextTabRight + (1f - currentPositionOffset) * lineRight);
