@@ -64,6 +64,14 @@
                 <category android:name="com.dryseed.dsdemo.TEST"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.pageTransformer.PageTransformerActivity"
+                android:label="ViewPager/PageTransformer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
