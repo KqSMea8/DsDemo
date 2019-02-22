@@ -44,6 +44,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.*;
 import com.dryseed.module_widget.R;
 import com.easy.moduler.lib.utils.FloatUtil;
+import com.easy.moduler.lib.utils.LogUtils;
 
 @SuppressWarnings("unused")
 public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
@@ -225,11 +226,11 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
     /**
      * 创建自定义tab view
      */
-    private ICustomTabProvider mCustomTabProvider;
+    protected ICustomTabProvider mCustomTabProvider;
     /**
      * 是否使用自定义tab view
      */
-    private boolean mIsCustomTab = false;
+    protected boolean mIsCustomTab = false;
     /**
      * 是通过点击直接选择的还是滑动选择的Tab
      * true: 点击
@@ -334,6 +335,7 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
      * 通知数据发生变化
      */
     public void notifyDataSetChanged() {
+        LogUtils.d("AdvancedPagerSlidingTabStrip notifyDataSetChanged");
         mTabsContainer.removeAllViews();
         PagerAdapter adapter = mPager.getAdapter();
         if (adapter == null) {
@@ -383,6 +385,8 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
             clearAllCustomTabSelect();
         }
         mCurrentPosition = mPager.getCurrentItem();
+        LogUtils.d("AdvancedPagerSlidingTabStrip updateInGlobalLayoutListener -> [left:%d][currentPosition:%d]",
+                mTabsContainer.getChildAt(mCurrentPosition).getLeft(), mCurrentPosition);
         if (mTabsContainer.getChildCount() > mCurrentPosition) {
             View tab = mTabsContainer.getChildAt(mCurrentPosition);
             if (mIsCustomTab && tab instanceof ViewGroup) {
@@ -522,7 +526,7 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
      * @param position 位置
      * @param title    标题
      */
-    private void addTextTab(final int position, String title) {
+    protected void addTextTab(final int position, String title) {
         RadioButton tab = new RadioButton(getContext());
         tab.setButtonDrawable(new ColorDrawable());
         tab.setText(title);
@@ -543,7 +547,7 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
      * @param position 位置
      * @param resId    icon的资源id
      */
-    private void addIconTab(final int position, int resId) {
+    protected void addIconTab(final int position, int resId) {
         ImageButton tab = new ImageButton(getContext());
         tab.setImageResource(resId);
         addTab(position, tab);

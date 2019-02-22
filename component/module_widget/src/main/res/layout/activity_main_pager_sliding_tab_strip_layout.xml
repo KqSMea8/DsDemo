@@ -6,7 +6,15 @@
               android:background="#eee"
               android:orientation="vertical">
 
-    <com.dryseed.module_widget.viewPager.advancedPagerSlidingTabStrip.AdvancedPagerSlidingTabStrip
+    <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="reset"/>
+
+    <com.dryseed.module_widget.viewPager.test.MainPagerSlidingTabStrip
             android:id="@+id/tab_strip"
             android:layout_width="match_parent"
             android:layout_height="48dip"

@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.easy.moduler.lib.utils.DPIUtil;
+import com.easy.moduler.lib.utils.LogUtils;
 
 /**
  * @author caiminming
@@ -34,16 +34,24 @@ public class TestWeightActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mHorizontalScrollView.scrollTo(DPIUtil.dip2px(200), 0);
+                reset();
             }
         }, 1000);
 
-        new Handler().postDelayed(new Runnable() {
+
+        /*new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mHorizontalScrollView.scrollTo(DPIUtil.dip2px(200), 0);
+            }
+        }, 1000);*/
+
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mHorizontalScrollView.scrollTo(DPIUtil.dip2px(400), 0);
             }
-        }, 2000);
+        }, 2000);*/
     }
 
     private void initView() {
@@ -67,6 +75,27 @@ public class TestWeightActivity extends Activity {
             tab.setGravity(Gravity.CENTER);
             tab.setSingleLine();
             addTab(i, tab);
+        }
+    }
+
+    private void reset() {
+        mTabsContainer.removeAllViews();
+        for (int i = 0; i < TITLES.length; i++) {
+            TextView tab = new TextView(this);
+            tab.setText(TITLES[i]);
+            tab.setGravity(Gravity.CENTER);
+            tab.setSingleLine();
+            addTab(i, tab);
+
+            // addView之后，因为没有layout，所以获取到的getLeft都为0。
+            LogUtils.d("left 111 : " + tab.getLeft());
+            // View.post，如果view还没有attachedToWindow，则会在dispatchAttachedToWindow()被回调
+            tab.post(new Runnable() {
+                @Override
+                public void run() {
+                    LogUtils.d("left 222 : " + tab.getLeft());
+                }
+            });
         }
     }
 

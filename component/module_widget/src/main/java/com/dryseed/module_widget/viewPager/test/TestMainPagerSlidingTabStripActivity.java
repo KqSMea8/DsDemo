@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewPager.advancedPagerSlidingTabStrip;
+package com.dryseed.module_widget.viewPager.test;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,19 +16,24 @@ import com.easy.moduler.lib.utils.LogUtils;
 /**
  * @author caiminming
  */
-public class AdvancedPagerSlidingTabStripActivity extends FragmentActivity {
+public class TestMainPagerSlidingTabStripActivity extends FragmentActivity {
+    @BindView(R.id.text)
+    TextView mResetBtn;
+
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
 
     @BindView(R.id.tab_strip)
-    AdvancedPagerSlidingTabStrip mTabStrip;
+    MainPagerSlidingTabStrip mTabStrip;
 
     private FragmentPagerAdapter mAdapter;
+
+    private int showTimes = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advanced_pager_sliding_tab_strip_layout);
+        setContentView(R.layout.activity_main_pager_sliding_tab_strip_layout);
         ButterKnife.bind(this);
         initViews();
     }
@@ -39,5 +44,26 @@ public class AdvancedPagerSlidingTabStripActivity extends FragmentActivity {
         mViewPager.setAdapter(mAdapter);
         mTabStrip.setViewPager(mViewPager);
         mViewPager.setCurrentItem(5);
+
+        mResetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter = new PagerSlidingTabStripAdapter(getSupportFragmentManager());
+                mViewPager.setAdapter(mAdapter);
+                //trigger notifyDataSetChanged()
+                mTabStrip.setViewPager(mViewPager);
+                mViewPager.setCurrentItem(7);
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogUtils.d("onResume");
+
+        if (++showTimes > 1) {
+            mResetBtn.performClick();
+        }
     }
 }
