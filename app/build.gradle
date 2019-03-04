@@ -52,4 +52,5 @@ dependencies {
     //compiler没有传递关系，虽然在:lib中注册了
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    testImplementation 'junit:junit:4.12'
 }

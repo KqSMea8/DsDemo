@@ -5,18 +5,18 @@
               android:background="#eee"
               android:orientation="vertical">
 
-    <TextView
-            android:id="@+id/text1"
-            style="@style/common_text_base_left"/>
-    <TextView
-            android:id="@+id/text2"
-            style="@style/common_text_base_left"/>
-    <TextView
-            android:id="@+id/text3"
-            style="@style/common_text_base_left"/>
-
     <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    <View android:layout_width="match_parent"
+          android:layout_height="48dp"
+          android:background="#000000"/>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/linked_view_pager"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>

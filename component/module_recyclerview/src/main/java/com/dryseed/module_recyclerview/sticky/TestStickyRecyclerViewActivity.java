@@ -17,6 +17,7 @@ import com.easy.moduler.lib.recyclerview.recyclerlistadapter.RecyclerListAdapter
 import com.easy.moduler.lib.recyclerview.viewholder.ChannelViewHolder;
 import com.easy.moduler.lib.recyclerview.viewholder.LabelViewHolder;
 import com.easy.moduler.lib.utils.DPIUtil;
+import com.easy.moduler.lib.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class TestStickyRecyclerViewActivity extends Activity {
     private LinearLayout mSuspensionBar;
     private TextView mSuspensionTv;
     private int mCurrentPosition = 0;
-    private int mSuspensionHeight = DPIUtil.dip2px(40);
+    private int mSuspensionHeight = DPIUtil.dip2px(50);
     private int mCurrentLabelId = -1;
 
     @Override
@@ -84,8 +85,12 @@ public class TestStickyRecyclerViewActivity extends Activity {
                     }
                 }
 
-                if (mCurrentPosition != mLinearLayoutManager.findFirstVisibleItemPosition()) {
-                    mCurrentPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
+                int firstVisibleItemPosition = mLinearLayoutManager.findFirstVisibleItemPosition();
+                if (mCurrentPosition != firstVisibleItemPosition) {
+                    LogUtils.d("mSuspensionBar.setY(0) : [CurrentPosition:%d][FirstVisibleItemPosition:%d]",
+                            mCurrentPosition, firstVisibleItemPosition);
+                    boolean isScrollDown = mCurrentPosition > firstVisibleItemPosition;
+                    mCurrentPosition = firstVisibleItemPosition;
                     mSuspensionBar.setY(0);
                     //找到上一个label，判断是否是同一个，不是同一个就更新mSuspensionBar
                     boolean hasFoundLabel = false;
@@ -95,7 +100,8 @@ public class TestStickyRecyclerViewActivity extends Activity {
                             LabelModel labelModel = (LabelModel) mRecyclerListAdapter.getItem(i);
                             if (mCurrentLabelId != labelModel.id) {
                                 mCurrentLabelId = labelModel.id;
-                                updateSuspensionBar(labelModel);
+                                LogUtils.d("updateSuspensionBar : %d", mCurrentPosition);
+                                updateSuspensionBar(labelModel, isScrollDown);
                                 break;
                             }
                             break;
@@ -104,7 +110,7 @@ public class TestStickyRecyclerViewActivity extends Activity {
                     //没找到label，则影藏mSuspensionBar
                     if (!hasFoundLabel) {
                         mCurrentLabelId = -1;
-                        updateSuspensionBar(null);
+                        updateSuspensionBar(null, false);
                     }
                 }
             }
@@ -119,12 +125,26 @@ public class TestStickyRecyclerViewActivity extends Activity {
         }
     }
 
-    private void updateSuspensionBar(LabelModel labelModel) {
+    private void updateSuspensionBar(LabelModel labelModel, boolean isScrollDown) {
         if (labelModel == null) {
             mSuspensionBar.setVisibility(View.GONE);
             return;
         }
-        mSuspensionTv.setText("Label " + labelModel.id);
+
+        if (isScrollDown) {
+            mSuspensionTv.post(new Runnable() {
+                @Override
+                public void run() {
+                    showSuspensionBar(labelModel);
+                }
+            });
+        } else {
+            showSuspensionBar(labelModel);
+        }
+    }
+
+    private void showSuspensionBar(LabelModel labelModel) {
+        mSuspensionTv.setText(labelModel.name);
         if (mSuspensionBar.getVisibility() == View.GONE) {
             mSuspensionBar.setVisibility(View.VISIBLE);
         }
@@ -134,7 +154,15 @@ public class TestStickyRecyclerViewActivity extends Activity {
         mData = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             if (i % 5 == 0 && i != 0) {
-                LabelModel labelModel = new LabelModel(i, "Label " + i);
+                String labelStr;
+                if (i == 5) {
+                    labelStr = "最近访问 最多保存三个非常用频道";
+                } else if (i == 10) {
+                    labelStr = "影视综艺";
+                } else {
+                    labelStr = "Label" + i;
+                }
+                LabelModel labelModel = new LabelModel(i, labelStr);
                 mData.add(labelModel);
             }
             ChannelModel channelModel = new ChannelModel("Channel " + i);

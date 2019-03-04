@@ -101,6 +101,14 @@
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.linkedViewPager.LinkedViewPagerActivity"
+                android:label="ViewPager/LinkedViewPager">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
