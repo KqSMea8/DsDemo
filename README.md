@@ -6,6 +6,9 @@
 * 修改Module中的build.gradle文件（从其他Module复制一份）
 * src/main/下创建debug目录，添加src/main/debug/AndroidManifest.xml
 * 修改src/main/AndroidManifest.xml
+* 整理src/main/res下的目录
 * 修改Constants.java
 * Module中添加Module.java
 * 修改Module中的launch activity
+* 修改app/build.gradle
+* 修改module的入口Activity（MainActivity）

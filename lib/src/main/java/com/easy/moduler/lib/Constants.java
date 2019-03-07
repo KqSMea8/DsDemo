@@ -58,6 +58,9 @@ public class Constants {
     // module_uiautomator
     public static final int MODULE_UIAUTOMATOR = 0x10;
 
+    // module_image
+    public static final int MODULE_IMAGE = 0x11;
+
     //==================模块间的服务定义============//
     /**
      * 服务定义规则：
@@ -72,5 +75,6 @@ public class Constants {
     public static final int SERVICE_WIDGET_UID = -0x0e001;
     public static final int SERVICE_VIEW_UID = -0x0f001;
     public static final int SERVICE_UIAUTOMATOR_UID = -0x1a001;
+    public static final int SERVICE_IMAGE_UID = -0x1b001;
 
 }
