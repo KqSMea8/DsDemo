@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
+import com.easy.moduler.lib.runtime.AppRuntime;
 import com.easy.moduler.lib.utils.DPIUtil;
 import com.easy.moduler.lib.utils.LogUtils;
 
@@ -28,6 +29,7 @@ public class CommonApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         sInstance = this;
+        AppRuntime.init(this);
     }
 
     @Override
@@ -46,5 +48,6 @@ public class CommonApplication extends Application {
 
         //AndroidUtilCode初始化
         Utils.init(this);
+
     }
 }

@@ -80,6 +80,30 @@
                 <category android:name="com.dryseed.dsdemo.TEST"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.fragmentStatePagerAdapter.FragmentStatePagerAdapterActivity"
+                android:label="ViewPager/FragmentStatePagerAdapter">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.tablayout.TabLayoutActivity"
+                android:label="TabLayout">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.popupWindow.PopupWindowActivity"
+                android:label="PopupWindow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -362,7 +362,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
             final float nextTabLeft = nextTab.getLeft();
             final float nextTabRight = nextTab.getRight();
 
-            LogUtils.d("[nextTabLeft:%f][nextTabRight:%f]", nextTabLeft, nextTabRight);
+            //LogUtils.d("[nextTabLeft:%f][nextTabRight:%f]", nextTabLeft, nextTabRight);
 
             lineLeft = (currentPositionOffset * nextTabLeft + (1f - currentPositionOffset) * lineLeft);
             lineRight = (currentPositionOffset * nextTabRight + (1f - currentPositionOffset) * lineRight);

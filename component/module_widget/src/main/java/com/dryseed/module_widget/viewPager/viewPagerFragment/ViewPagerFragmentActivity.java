@@ -59,9 +59,4 @@ public class ViewPagerFragmentActivity extends FragmentActivity {
             }
         });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 }
