@@ -21,3 +21,5 @@ include ':module_uiautomator'
 project(':module_uiautomator').projectDir = new File(rootDir, 'component/module_uiautomator')
 include ':module_image'
 project(':module_image').projectDir = new File(rootDir, 'component/module_image')
+include ':module_navigation'
+project(':module_navigation').projectDir = new File(rootDir, 'component/module_navigation')

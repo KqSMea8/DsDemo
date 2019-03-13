@@ -90,5 +90,13 @@
                 <category android:name="com.dryseed.dsdemo.TEST"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".addAnimationOnItem.RecyclerViewAddAnimationOnItemActivity"
+                android:label="RecyclerView/AddAnimationOnItem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

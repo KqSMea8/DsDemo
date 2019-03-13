@@ -25,8 +25,9 @@ public class LogUtils {
     }
 
     public static void d(String msg, Object... objects) {
+        String text = String.format(msg, objects);
         if (DEBUG) {
-            String values = getFileLineMethod() + " " + (TextUtils.isEmpty(msg) ? "" : msg);
+            String values = getFileLineMethod() + " " + (TextUtils.isEmpty(msg) ? "" : text);
             Log.d(TAG, values);
         }
     }

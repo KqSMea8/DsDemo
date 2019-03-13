@@ -48,6 +48,7 @@ dependencies {
         implementation project(":module_animation")
         implementation project(":module_widget")
         implementation project(":module_image")
+        implementation project(":module_navigation")
     }
 
     //compiler没有传递关系，虽然在:lib中注册了

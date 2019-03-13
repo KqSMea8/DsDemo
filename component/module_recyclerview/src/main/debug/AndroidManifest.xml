@@ -102,6 +102,14 @@
                 <category android:name="com.dryseed.dsdemo.RECYCLERVIEW"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".addAnimationOnItem.RecyclerViewAddAnimationOnItemActivity"
+                android:label="AddAnimationOnItem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.RECYCLERVIEW"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

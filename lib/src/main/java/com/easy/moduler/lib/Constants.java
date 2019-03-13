@@ -61,6 +61,9 @@ public class Constants {
     // module_image
     public static final int MODULE_IMAGE = 0x11;
 
+    // module_navigation
+    public static final int MODULE_NAVIGATION = 0x12;
+
     //==================模块间的服务定义============//
     /**
      * 服务定义规则：
@@ -76,5 +79,6 @@ public class Constants {
     public static final int SERVICE_VIEW_UID = -0x0f001;
     public static final int SERVICE_UIAUTOMATOR_UID = -0x1a001;
     public static final int SERVICE_IMAGE_UID = -0x1b001;
+    public static final int SERVICE_NAVIGATION_UID = -0x1c001;
 
 }

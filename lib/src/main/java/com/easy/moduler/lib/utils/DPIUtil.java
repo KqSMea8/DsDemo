@@ -7,6 +7,7 @@ import android.support.annotation.AttrRes;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.easy.moduler.lib.CommonApplication;
 
 /**
  * 屏幕属性，各个密度单位转化
@@ -37,9 +38,9 @@ public class DPIUtil {
     /**
      * 取得getDefaultDisplay的值
      */
-    public static Display getDefaultDisplay(Context context) {
+    public static Display getDefaultDisplay() {
         if (null == defaultDisplay) {
-            WindowManager systemService = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            WindowManager systemService = (WindowManager) CommonApplication.getInstance().getSystemService(Context.WINDOW_SERVICE);
             defaultDisplay = systemService.getDefaultDisplay();
         }
         return defaultDisplay;
@@ -51,8 +52,8 @@ public class DPIUtil {
      * @param percent 百分比，比如0.3
      * @return 屏幕宽度×percent值
      */
-    public static int percentWidth(Context context, float percent) {
-        return (int) (getWidth(context) * percent);
+    public static int percentWidth(float percent) {
+        return (int) (getWidth() * percent);
     }
 
     /**
@@ -61,8 +62,8 @@ public class DPIUtil {
      * @param percent 百分比，比如0.3
      * @return 屏幕高度×percent值
      */
-    public static int percentHeight(Context context, float percent) {
-        return (int) (getHeight(context) * percent);
+    public static int percentHeight(float percent) {
+        return (int) (getHeight() * percent);
     }
 
     /**
@@ -90,8 +91,8 @@ public class DPIUtil {
      *
      * @return 屏幕宽度
      */
-    public static int getWidth(Context context) {
-        return getDefaultDisplay(context).getWidth();
+    public static int getWidth() {
+        return getDefaultDisplay().getWidth();
     }
 
     /**
@@ -99,8 +100,8 @@ public class DPIUtil {
      *
      * @return 屏幕高度
      */
-    public static int getHeight(Context context) {
-        return getDefaultDisplay(context).getHeight();
+    public static int getHeight() {
+        return getDefaultDisplay().getHeight();
     }
 
     /**
@@ -132,8 +133,8 @@ public class DPIUtil {
      * @param nDesignScreenWidth 分母
      * @return 屏幕高度×（nDesignValue/nDesignScreenWidth）四舍五入
      */
-    public static int getWidthByDesignValue(Context context, int nDesignValue, int nDesignScreenWidth) {
-        return (int) (getWidth(context) * nDesignValue / (float) nDesignScreenWidth + 0.5f);
+    public static int getWidthByDesignValue(int nDesignValue, int nDesignScreenWidth) {
+        return (int) (getWidth() * nDesignValue / (float) nDesignScreenWidth + 0.5f);
     }
 
     /**
@@ -142,8 +143,8 @@ public class DPIUtil {
      * @param nDesignValue 分子
      * @return 屏幕高度×（nDesignValue/720）
      */
-    public static int getWidthByDesignValue720(Context context, int nDesignValue) {
-        return getWidthByDesignValue(context, nDesignValue, 720);
+    public static int getWidthByDesignValue720(int nDesignValue) {
+        return getWidthByDesignValue(nDesignValue, 720);
     }
 
     public static int getThemeColor(Context c, @AttrRes int themeColor) {

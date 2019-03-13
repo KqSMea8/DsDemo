@@ -54,6 +54,14 @@
                 <category android:name="com.dryseed.dsdemo.VIEW"/>
             </intent-filter>
         </activity>
+        <activity
+                android:name=".bezier.TestBezierActivity"
+                android:label="Bezier">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.VIEW"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

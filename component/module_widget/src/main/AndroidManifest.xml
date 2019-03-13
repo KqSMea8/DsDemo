@@ -18,7 +18,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.statusbar.TestStatusBarActivity"
-                android:label="StatusBar">
+                android:label="Widget/StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -26,7 +26,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.statusbar.MyStatusBarActivity"
-                android:label="MyStatusBar">
+                android:label="Widget/MyStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -34,7 +34,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.viewPagerFragment.ViewPagerFragmentActivity"
-                android:label="ViewPager/ViewPagerFragment">
+                android:label="Widget/ViewPager/ViewPagerFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -42,7 +42,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.noPreloadViewPager.NoPreloadViewPagerActivity"
-                android:label="ViewPager/NoPreloadViewPager">
+                android:label="Widget/ViewPager/NoPreloadViewPager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -50,7 +50,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.pagerSlidingTabStrip.PagerSlidingTabStripActivity"
-                android:label="ViewPager/PagerSlidingTabStrip">
+                android:label="Widget/ViewPager/PagerSlidingTabStrip">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -58,7 +58,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.advancedPagerSlidingTabStrip.AdvancedPagerSlidingTabStripActivity"
-                android:label="ViewPager/AdvancedPagerSlidingTabStrip">
+                android:label="Widget/ViewPager/AdvancedPagerSlidingTabStrip">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -66,7 +66,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.pageTransformer.PageTransformerActivity"
-                android:label="ViewPager/PageTransformer">
+                android:label="Widget/ViewPager/PageTransformer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -74,7 +74,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.linkedViewPager.LinkedViewPagerActivity"
-                android:label="ViewPager/LinkedViewPager">
+                android:label="Widget/ViewPager/LinkedViewPager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -82,7 +82,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.viewPager.fragmentStatePagerAdapter.FragmentStatePagerAdapterActivity"
-                android:label="ViewPager/FragmentStatePagerAdapter">
+                android:label="Widget/ViewPager/FragmentStatePagerAdapter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -90,7 +90,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.tablayout.TabLayoutActivity"
-                android:label="TabLayout">
+                android:label="Widget/TabLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>
@@ -98,7 +98,7 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.popupWindow.PopupWindowActivity"
-                android:label="PopupWindow">
+                android:label="Widget/PopupWindow">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.TEST"/>

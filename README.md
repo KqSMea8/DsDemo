@@ -9,6 +9,5 @@
 * 整理src/main/res下的目录
 * 修改Constants.java
 * Module中添加Module.java
-* 修改Module中的launch activity
 * 修改app/build.gradle
 * 修改module的入口Activity（MainActivity）
