@@ -41,6 +41,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.*;
 import com.dryseed.module_widget.R;
 import com.easy.moduler.lib.utils.FloatUtil;
+import com.easy.moduler.lib.utils.LogUtils;
 
 @SuppressWarnings("unused")
 public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
@@ -238,6 +239,15 @@ public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
      */
     private int mSaveScrollX;
     /**
+     * 上一次绘制的位置
+     */
+    int mLastDrawPosition = -1;
+    /**
+     * 上一次绘制的位置
+     */
+    float mLastDrawStopX = -1;
+
+    /**
      * 重置scrollX
      */
     private Runnable mResetScrollXRunnable = new Runnable() {
@@ -433,6 +443,8 @@ public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
                 if (mTabClickListener != null) {
                     mTabClickListener.onClick(v);
                 }
+                //用户手动点击Tab，需要更新Indicator Line
+                mLastDrawPosition = -1;
             }
         });
         if (mShouldExpand) {
@@ -802,11 +814,29 @@ public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
             lineRight = nextCenter + mIndicatorWidth / 2f;
         }
         float halfEdge = mIndicatorHeight / 2f;
+        LogUtils.d("[startX:%f][stopX:%f][mLastDrawStopX:%f][mCurrentPosition:%d][position:%d][mLastDrawPosition:%d]",
+                lineLeft + halfEdge, lineRight - halfEdge, mLastDrawStopX, mCurrentPosition, mPager.getCurrentItem(), mLastDrawPosition);
+
+        //老版本的ViewPager，在手动选中某个tab时，只会触发onPageSelected，不会触发onPageScroll回调。所以mCurrentPosition在onPageSelected设置了。
+        //又会引发另一个问题：在滑动过程中，onPageSelected会在onPageScroll连续过程中间被调用，导致mCurrentPosition会有1->1->2->1->->1这一变化过程。
+        //故对此情况加以保护。
+        if (mLastDrawPosition > -1 && mLastDrawPosition != mCurrentPosition && mLastDrawStopX > -1) {
+            if (lineRight - halfEdge - mLastDrawStopX > 100) {
+                mLastDrawStopX = -1;
+                mLastDrawPosition = -1;
+                return;
+            }
+        }
+        mLastDrawStopX = lineRight - halfEdge;
+        mLastDrawPosition = mCurrentPosition;
+
         canvas.drawLine(lineLeft + halfEdge,
                 height - mIndicatorHeight / 2f - mIndicatorBottomPadding,
                 lineRight - halfEdge,
                 height - mIndicatorHeight / 2f - mIndicatorBottomPadding,
                 mIndicatorPaint);
+
+
     }
 
     protected void setIndicatorLineColor() {
@@ -1196,6 +1226,7 @@ public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
     protected class PageListener implements NoPreloadViewPager.OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            LogUtils.d("onPageScrolled : [position:%d][mCurrentPosition:%d][positionOffset:%f]", position, mCurrentPosition, positionOffset);
             View currentTab = mTabsContainer.getChildAt(mCurrentPosition);
             if (mCurrentPosition != position) {
                 if (currentTab instanceof TextView) {
@@ -1232,6 +1263,7 @@ public class PagerSlidingTabStripForNoPreload extends HorizontalScrollView {
         @Override
         public void onPageSelected(int position) {
             mCurrentPosition = position;
+
             if (mToCenter) {
                 scrollToChild(position, 0);
             }

@@ -1204,6 +1204,7 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
     protected class PageListener implements OnPageChangeListener {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            LogUtils.d("onPageScrolled : [position:%d][positionOffset:%f][positionOffsetPixels:%d]", position, positionOffset, positionOffsetPixels);
             View currentTab = mTabsContainer.getChildAt(mCurrentPosition);
             if (mCurrentPosition != position) {
                 if (currentTab instanceof TextView) {
@@ -1239,6 +1240,7 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
 
         @Override
         public void onPageSelected(int position) {
+            LogUtils.d("onPageSelected : [position:%d]", position);
             if (mToCenter) {
                 scrollToChild(position, 0);
             }
