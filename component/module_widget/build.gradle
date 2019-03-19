@@ -56,14 +56,21 @@ dependencies {
     api project(":lib")
     annotationProcessor project(':apt')
 
+    //compiler没有传递关系，虽然在:lib中注册了
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
     // ----------------------------------------------------
     // ########## ImmersionBar ##########
     // https://github.com/gyf-dev/ImmersionBar
     // ----------------------------------------------------
     implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
 
-    //compiler没有传递关系，虽然在:lib中注册了
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
-
+    // ----------------------------------------------------
+    // ########## UltraViewPager ##########
+    // https://github.com/alibaba/UltraViewPager
+    // ----------------------------------------------------
+    /*implementation('com.alibaba.android:ultraviewpager:1.0.7.7') {
+        exclude module: 'support-v4'
+    }*/
 }

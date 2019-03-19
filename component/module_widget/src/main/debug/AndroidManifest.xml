@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.dryseed.module_widget.statusbar.TestStatusBarActivity"
+                android:name="com.dryseed.module_widget.statusbar.ImmersionBarActivity"
                 android:label="StatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -104,6 +104,14 @@
         <activity
                 android:name="com.dryseed.module_widget.viewPager.linkedViewPager.LinkedViewPagerActivity"
                 android:label="ViewPager/LinkedViewPager">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.linkedViewPager.LinkedUltraViewPagerActivity"
+                android:label="ViewPager/LinkedUltraViewPager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>

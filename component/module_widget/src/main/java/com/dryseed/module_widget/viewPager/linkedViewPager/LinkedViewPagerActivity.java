@@ -38,10 +38,12 @@ public class LinkedViewPagerActivity extends AppCompatActivity {
     private void initViews() {
         mAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         mViewPager.addOnPageChangeListener(new BaseLinkPageChangeListener(mViewPager, mLinkedViewPager));
+        mViewPager.setOffscreenPageLimit(2);
         mViewPager.setAdapter(mAdapter);
 
         mLinkedAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         mLinkedViewPager.addOnPageChangeListener(new BaseLinkPageChangeListener(mLinkedViewPager, mViewPager));
+        mLinkedViewPager.setOffscreenPageLimit(2);
         mLinkedViewPager.setAdapter(mLinkedAdapter);
     }
 

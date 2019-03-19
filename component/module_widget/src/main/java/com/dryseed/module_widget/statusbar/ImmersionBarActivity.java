@@ -18,7 +18,7 @@ import com.gyf.barlibrary.ImmersionBar;
  * @author caiminming
  */
 @Route(path = RouterConfig.ROUTER_MODULE_WIDGET_TESTSTATUSBARACTIVITY)
-public class TestStatusBarActivity extends Activity {
+public class ImmersionBarActivity extends Activity {
 
     private final int DEMO_1 = 1;
     private final int DEMO_2 = 2;
