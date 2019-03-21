@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewPager.linkedViewPager;
+package com.dryseed.module_widget.viewPager.linkedViewPager.baseViewPager;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.dryseed.module_widget.R;
+import com.easy.moduler.lib.utils.LogUtils;
 
 /**
  * @author caiminming
  */
-public class LinkedUltraViewPagerAdapter extends PagerAdapter {
+public class LinkedViewPagerAdapter extends PagerAdapter {
 
     private int[] mImageRes = {R.drawable.t0, R.drawable.t1, R.drawable.t2, R.drawable.t3};
 
@@ -19,7 +20,7 @@ public class LinkedUltraViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView = new ImageView(container.getContext());
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        imageView.setImageResource(mImageRes[position]);
+        imageView.setImageResource(mImageRes[position % mImageRes.length]);
         imageView.setBackgroundColor(0xffff0000);
         imageView.setTag(position);
         container.addView(imageView);

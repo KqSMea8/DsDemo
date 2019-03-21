@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewPager.linkedViewPager;
+package com.dryseed.module_widget.viewPager.linkedViewPager.ultraViewPager;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.dryseed.module_widget.R;
+import com.dryseed.module_widget.viewPager.linkedViewPager.baseViewPager.LinkedViewPagerAdapter;
 import com.dryseed.module_widget.viewPager.ultraviewpager.UltraViewPager;
 import com.easy.moduler.lib.utils.LogUtils;
 
@@ -23,8 +24,8 @@ public class LinkedUltraViewPagerActivity extends AppCompatActivity {
     @BindView(R.id.view_pager)
     UltraViewPager mViewPager;
 
-    private LinkedUltraViewPagerAdapter mLinkedAdapter;
-    private LinkedUltraViewPagerAdapter mAdapter;
+    private LinkedViewPagerAdapter mLinkedAdapter;
+    private LinkedViewPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,12 +36,12 @@ public class LinkedUltraViewPagerActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        mLinkedAdapter = new LinkedUltraViewPagerAdapter();
+        mLinkedAdapter = new LinkedViewPagerAdapter();
         mLinkedViewPager.setAdapter(mLinkedAdapter);
         mLinkedViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LogUtils.d("mLinkedViewPager [position:%d]", position);
+                //LogUtils.d("mLinkedViewPager [position:%d]", position);
             }
 
             @Override
@@ -53,31 +54,42 @@ public class LinkedUltraViewPagerActivity extends AppCompatActivity {
 
             }
         });
+        mLinkedViewPager.setAutoMeasureHeight(true);
         mLinkedViewPager.setInfiniteLoop(true);
+        mLinkedViewPager.setOffscreenPageLimit(1);
 
 
-        mAdapter = new LinkedUltraViewPagerAdapter();
+        mAdapter = new LinkedViewPagerAdapter();
         mViewPager.setAdapter(mAdapter);
-        //mViewPager.setOnPageChangeListener(new BaseLinkUltraPageChangeListener(mViewPager, mLinkedViewPager));
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            private int pos;
+
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                LogUtils.d("mViewPager [position:%d]", position);
+                int width = mLinkedViewPager.getViewPager().getWidth();
+                int scrollX = (int) (width * position + width * positionOffset);
                 mLinkedViewPager.getViewPager().scrollTo(mViewPager.getViewPager().getScrollX(), 0);
+                //mLinkedViewPager.getViewPager().scrollTo(scrollX, 0);
+                LogUtils.d("mViewPager [position:%d][scrollX:%d | %d]", position, scrollX, mViewPager.getViewPager().getScrollX());
             }
 
             @Override
-            public void onPageSelected(int i) {
-                mLinkedViewPager.getViewPager().setCurrentItem(i, false);
+            public void onPageSelected(int position) {
+                LogUtils.d("mViewPager onPageSelected : %d", position);
+                pos = position;
             }
 
             @Override
-            public void onPageScrollStateChanged(int i) {
-
+            public void onPageScrollStateChanged(int state) {
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    mLinkedViewPager.getViewPager().setCurrentItem(pos);
+                }
             }
         });
+        mViewPager.setAutoMeasureHeight(true);
         mViewPager.setInfiniteLoop(true);
-
+        mViewPager.setOffscreenPageLimit(1);
+        //mViewPager.setAutoScroll(5000);
 
     }
 

@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.viewPager.linkedViewPager;
+package com.dryseed.module_widget.viewPager.linkedViewPager.baseViewPager;
 
 import android.support.v4.view.ViewPager;
 
