@@ -65,6 +65,14 @@
             </intent-filter>
         </activity>
         <activity
+                android:name="com.dryseed.module_widget.viewPager.morePagerSlidingTabStrip.MoreAdvancedPagerSlidingTabStripActivity"
+                android:label="Widget/ViewPager/MoreAdvancedPagerSlidingTabStrip">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
                 android:name="com.dryseed.module_widget.viewPager.pageTransformer.PageTransformerActivity"
                 android:label="Widget/ViewPager/PageTransformer">
             <intent-filter>

@@ -35,6 +35,7 @@ import android.view.*;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+import com.easy.moduler.lib.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1215,6 +1216,7 @@ public class NoPreloadViewPager extends ViewGroup {
                     final int widthWithMargin = getWidth() + mPageMargin;
                     final int scrollX = getScrollX();
                     final int currentPage = scrollX / widthWithMargin;
+                    LogUtils.d("MMMM", "initialVelocity : " + initialVelocity);
                     int nextPage = initialVelocity > 0 ? currentPage : currentPage + 1;
                     setCurrentItemInternal(nextPage, true, true, initialVelocity);
 

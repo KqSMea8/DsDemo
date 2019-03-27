@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.dryseed.module_widget.R;
@@ -24,6 +27,13 @@ public class LinkedMyViewPagerActivity extends AppCompatActivity {
     @BindView(R.id.view_pager)
     UltraViewPager mViewPager;
 
+    @BindView(R.id.scroll_bar)
+    TextView mScrollBar;
+
+    @BindView(R.id.scroll_txt)
+    TextView mScrollTxt;
+
+    private float mLastX;
     private LinkedViewPagerAdapter mLinkedAdapter;
     private LinkedViewPagerAdapter mAdapter;
 
@@ -59,7 +69,7 @@ public class LinkedMyViewPagerActivity extends AppCompatActivity {
 
             }
         });
-        mLinkedViewPager.setOffscreenPageLimit(3);
+        mLinkedViewPager.setOffscreenPageLimit(6);
 
 
         mAdapter = new LinkedViewPagerAdapter();
@@ -71,15 +81,13 @@ public class LinkedMyViewPagerActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 int width = mLinkedViewPager.getWidth();
                 int scrollX = (int) (width * position + width * positionOffset);
-
-                //mLinkedViewPager.scrollTo(mViewPager.getViewPager().getScrollX(), 0);
                 mLinkedViewPager.scrollTo(scrollX, 0);
-                LogUtils.d("mViewPager [position:%d][scrollX:%d][linkedPos:%d]", position, scrollX, mLinkedViewPager.getCurrentItem());
+                //mLinkedViewPager.scrollTo(mViewPager.getViewPager().getScrollX(), 0);
+                LogUtils.d("mViewPager [position:%d][scrollX:%d | %d]", position, scrollX, mViewPager.getViewPager().getScrollX());
             }
 
             @Override
             public void onPageSelected(int position) {
-                LogUtils.d("mViewPager onPageSelected : %d", position);
                 pos = position;
             }
 
@@ -92,9 +100,27 @@ public class LinkedMyViewPagerActivity extends AppCompatActivity {
         });
         mViewPager.setAutoMeasureHeight(true);
         mViewPager.setInfiniteLoop(true);
-        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(6);
         //mViewPager.setAutoScroll(5000);
 
+
+        mScrollBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float x = event.getX();
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        float dx = x - mLastX;
+                        mLinkedViewPager.scrollBy((int) dx * 5, 0);
+                        mScrollTxt.setText(mLinkedViewPager.getScrollX() + "");
+                        break;
+                    default:
+                        break;
+                }
+                mLastX = x;
+                return true;
+            }
+        });
     }
 
 }
