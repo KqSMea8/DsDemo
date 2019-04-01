@@ -113,6 +113,14 @@
             </intent-filter>
         </activity>
         <activity
+                android:name="com.dryseed.module_widget.viewPager.fullScreenViewPager.FullScreenViewPagerActivity"
+                android:label="Widget/ViewPager/FullScreenViewPager">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.TEST"/>
+            </intent-filter>
+        </activity>
+        <activity
                 android:name="com.dryseed.module_widget.tablayout.TabLayoutActivity"
                 android:label="Widget/TabLayout">
             <intent-filter>

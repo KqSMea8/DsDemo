@@ -1276,7 +1276,8 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
     float deltaX = 0;
     boolean canJump;
     boolean canDrag;
-    private static final int DRAG_DISTANCE = 100;
+    private static final int DRAG_JUMP_MAX_DISTANCE = 200;
+    private static final int DRAG_CAN_JUMP_DISTANCE = 100;
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
@@ -1293,21 +1294,22 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
                 float mMoveX = e.getRawX() - mLastX;
                 Log.d("MMM", "mMoveX : " + mMoveX);
 
-                if (canDrag && mMoveX > 0) {
-                    deltaX = deltaX + mMoveX;
-                    if (deltaX > DRAG_DISTANCE) {
-                        deltaX = DRAG_DISTANCE;
+                //手指向左滑
+                if (canDrag && mMoveX < 0) {
+                    deltaX = deltaX - mMoveX;
+                    if (deltaX > DRAG_JUMP_MAX_DISTANCE) {
+                        deltaX = DRAG_JUMP_MAX_DISTANCE;
                     }
 
-                    //Log.d("MMM", "=> getRawX : " + e.getRawX() + " | mLastX : " + mLastX + " | deltaX ：" + deltaX + " | scrollX : " + getScrollX());
-                    Log.d("MMM", "111 maxScroll : " + (getChildAt(0).getMeasuredWidth() - getMeasuredWidth()) + " | scrollX : " + getScrollX() + " | deltaX : " + deltaX);
+                    Log.d("MMM", "111 maxScroll : " + (getChildAt(0).getMeasuredWidth() - getMeasuredWidth()) +
+                            " | scrollX : " + getScrollX() + " | deltaX : " + deltaX);
 
                     resetMoreView((int) deltaX);
                 }
                 mLastX = e.getRawX();
                 break;
             case MotionEvent.ACTION_UP:
-                if (canDrag && deltaX >= DRAG_DISTANCE) {
+                if (canDrag && deltaX >= DRAG_JUMP_MAX_DISTANCE) {
                     canJump = true;
                     jump();
                 }
