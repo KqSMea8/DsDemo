@@ -1,4 +1,4 @@
-package com.dryseed.module_navigation;
+package com.dryseed.module_tools;
 
 import android.os.Message;
 import com.easy.moduler.lib.Constants;
@@ -13,7 +13,7 @@ public class Module extends BaseModule {
 
     @Override
     public void afterConnected() {
-        ServiceBus.getInstance().registerService(Constants.SERVICE_NAVIGATION_UID, new CallBack<String>() {
+        ServiceBus.getInstance().registerService(Constants.SERVICE_TOOL_UID, new CallBack<String>() {
             @Override
             public String onCall(Message msg) {
                 return "MODULE_NAVIGATION";
@@ -23,7 +23,7 @@ public class Module extends BaseModule {
 
     @Override
     public int getModuleId() {
-        return Constants.MODULE_NAVIGATION;
+        return Constants.MODULE_TOOLS;
     }
 
 }

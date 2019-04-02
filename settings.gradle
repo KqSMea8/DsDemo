@@ -23,3 +23,5 @@ include ':module_image'
 project(':module_image').projectDir = new File(rootDir, 'component/module_image')
 include ':module_navigation'
 project(':module_navigation').projectDir = new File(rootDir, 'component/module_navigation')
+include ':module_tools'
+project(':module_tools').projectDir = new File(rootDir, 'component/module_tools')

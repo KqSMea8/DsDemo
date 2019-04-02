@@ -1,4 +1,4 @@
-package com.dryseed.module_widget.tablayout;
+package com.dryseed.module_widget.tabLayout;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
