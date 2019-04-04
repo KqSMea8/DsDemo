@@ -37,19 +37,17 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.*;
-import android.view.Gravity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.*;
 import com.blankj.utilcode.util.ToastUtils;
 import com.dryseed.module_widget.R;
+import com.easy.moduler.lib.utils.DPIUtil;
 import com.easy.moduler.lib.utils.FloatUtil;
 import com.easy.moduler.lib.utils.LogUtils;
 
 @SuppressWarnings("unused")
-public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
+public class MoreAdvancedPagerSlidingTabStrip2 extends HorizontalScrollView {
 
     /**
      * 从ColorState中获取选中颜色
@@ -253,21 +251,21 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
         }
     };
 
-    public MoreAdvancedPagerSlidingTabStrip(Context context) {
+    public MoreAdvancedPagerSlidingTabStrip2(Context context) {
         this(context, null);
     }
 
-    public MoreAdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs) {
+    public MoreAdvancedPagerSlidingTabStrip2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MoreAdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyle) {
+    public MoreAdvancedPagerSlidingTabStrip2(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MoreAdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public MoreAdvancedPagerSlidingTabStrip2(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -376,16 +374,10 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
         });
     }
 
-    private RadioButton mFooterView;
+    private TextView mFooterView;
 
     private void addFooterView() {
-        mFooterView = new RadioButton(getContext());
-        mFooterView.setButtonDrawable(new ColorDrawable());
-        mFooterView.setText("左滑查看更多");
-        mFooterView.setGravity(Gravity.CENTER);
-        mFooterView.setLines(1);
-        mFooterView.setIncludeFontPadding(false);
-        mFooterView.setBackgroundColor(Color.TRANSPARENT);
+        mFooterView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_more_pager_sliding_tab_strip_layout, null);
         mTabsContainer.addView(mFooterView, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
@@ -1182,15 +1174,15 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
 
     private static class SavedState extends BaseSavedState {
 
-        public static final Creator<SavedState> CREATOR = new Creator<MoreAdvancedPagerSlidingTabStrip.SavedState>() {
+        public static final Creator<SavedState> CREATOR = new Creator<MoreAdvancedPagerSlidingTabStrip2.SavedState>() {
             @Override
-            public MoreAdvancedPagerSlidingTabStrip.SavedState createFromParcel(Parcel in) {
-                return new MoreAdvancedPagerSlidingTabStrip.SavedState(in);
+            public MoreAdvancedPagerSlidingTabStrip2.SavedState createFromParcel(Parcel in) {
+                return new MoreAdvancedPagerSlidingTabStrip2.SavedState(in);
             }
 
             @Override
-            public MoreAdvancedPagerSlidingTabStrip.SavedState[] newArray(int size) {
-                return new MoreAdvancedPagerSlidingTabStrip.SavedState[size];
+            public MoreAdvancedPagerSlidingTabStrip2.SavedState[] newArray(int size) {
+                return new MoreAdvancedPagerSlidingTabStrip2.SavedState[size];
             }
         };
 
@@ -1347,7 +1339,9 @@ public class MoreAdvancedPagerSlidingTabStrip extends HorizontalScrollView {
     }
 
     private void resetMoreView(int padding) {
-        mFooterView.setPadding(0, 0, padding, 0);
+        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(padding + DPIUtil.dip2px(50), ViewGroup.LayoutParams.WRAP_CONTENT);
+        mFooterView.setLayoutParams(rlp);
+        //mFooterView.setPadding(0, 0, padding, 0);
     }
 
     private void jump() {

@@ -31,7 +31,23 @@
         </activity>
         <activity
                 android:name="com.dryseed.module_widget.statusbar.ImmersionBarActivity"
-                android:label="StatusBar">
+                android:label="StatusBar/ImmersionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.statusbar.ImmersionBarDemo1Activity"
+                android:label="StatusBar/ImmersionBarDemo1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.statusbar.ImmersionBarDemo2Activity"
+                android:label="StatusBar/ImmersionBarDemo2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>
@@ -80,6 +96,14 @@
         <activity
                 android:name="com.dryseed.module_widget.viewPager.morePagerSlidingTabStrip.MoreAdvancedPagerSlidingTabStripActivity"
                 android:label="ViewPager/MoreAdvancedPagerSlidingTabStrip">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.viewPager.morePagerSlidingTabStrip.MoreAdvancedPagerSlidingTabStripActivity2"
+                android:label="ViewPager/MoreAdvancedPagerSlidingTabStrip2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>
@@ -152,6 +176,14 @@
         <activity
                 android:name="com.dryseed.module_widget.popupWindow.PopupWindowActivity"
                 android:label="PopupWindow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.dryseed.dsdemo.WIDGET"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.dryseed.module_widget.attr.GetAttrFromXmlActivity"
+                android:label="GetAttrFromXml">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="com.dryseed.dsdemo.WIDGET"/>
