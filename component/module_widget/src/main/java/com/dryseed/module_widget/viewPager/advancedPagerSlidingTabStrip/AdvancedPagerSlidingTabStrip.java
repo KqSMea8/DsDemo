@@ -354,6 +354,9 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
                 addTextTab(i, String.valueOf(adapter.getPageTitle(i)));
             }
         }
+
+        addFooterView();
+
         getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -369,6 +372,10 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
                 updateInGlobalLayoutListener();
             }
         });
+    }
+
+    protected void addFooterView() {
+
     }
 
     protected void updateInGlobalLayoutListener() {
