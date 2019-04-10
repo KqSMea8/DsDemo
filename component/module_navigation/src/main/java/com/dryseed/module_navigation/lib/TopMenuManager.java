@@ -1,0 +1,76 @@
+package com.dryseed.module_navigation.lib;
+
+import android.support.v4.view.ViewPager;
+import com.dryseed.module_navigation.lib.adapter.TopMenuPagerAdapter;
+import com.dryseed.module_navigation.lib.config.LoaderType;
+import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.loader.ILoaderListener;
+import com.dryseed.module_navigation.lib.loader.LoaderManager;
+import com.dryseed.module_navigation.lib.widget.AdvancedPagerSlidingTabStrip;
+
+import java.util.ArrayList;
+
+/**
+ * @author caiminming
+ */
+public class TopMenuManager {
+
+    TopMenuPagerAdapter mFragmentPagerAdapter;
+
+    LoaderManager mLoaderManager;
+
+    ViewPager mViewPager;
+
+    AdvancedPagerSlidingTabStrip mTabStrip;
+
+    public TopMenuManager() {
+
+    }
+
+    /**
+     * 设置数据
+     *
+     * @param loaderType 加载数据类型
+     * @param data       要设置的数据
+     * @param <T>        设置数据的不同类型
+     */
+    public <T> void setData(LoaderType loaderType, T data) {
+        if (mLoaderManager == null) {
+            return;
+        }
+        mLoaderManager.processData(loaderType, data, new ILoaderListener() {
+            @Override
+            public void onSuccess(ArrayList<TopMenuTabEntity> tabEntities) {
+                if (mFragmentPagerAdapter != null) {
+                    mFragmentPagerAdapter.setData(tabEntities);
+                }
+                if (mTabStrip != null && mViewPager != null) {
+                    mTabStrip.setViewPager(mViewPager);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+    }
+
+    public void setAdapter(TopMenuPagerAdapter pagerAdapter) {
+        mFragmentPagerAdapter = pagerAdapter;
+    }
+
+
+    public void setLoaderManager(LoaderManager loaderManager) {
+        mLoaderManager = loaderManager;
+    }
+
+    public void setViewPager(ViewPager viewPager) {
+        mViewPager = viewPager;
+    }
+
+    public void setTabStrip(AdvancedPagerSlidingTabStrip tabStrip) {
+        mTabStrip = tabStrip;
+    }
+
+}

@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.dryseed.module_navigation.NavigationActivity"
+                android:name="com.dryseed.module_navigation.demo.NavigationActivity"
                 android:label="NavigationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
