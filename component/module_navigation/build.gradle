@@ -61,4 +61,12 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 
     implementation "com.google.code.gson:gson:2.8.5"
+    implementation "qiyi.basecore.network:networklib:10.3.5.2"
+
+    api 'com.facebook.fresco:fresco:1.10.0'
+    // 支持 GIF 动图，需要添加
+    api 'com.facebook.fresco:animated-gif:1.10.0'
+    // 支持 WebP （静态图+动图），需要添加
+    api 'com.facebook.fresco:animated-webp:1.10.0'
+    api 'com.facebook.fresco:webpsupport:1.10.0'
 }

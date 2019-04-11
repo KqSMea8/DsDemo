@@ -1,6 +1,6 @@
 package com.dryseed.module_navigation.lib.loader;
 
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class UrlLoader<T> extends AbsLoader<T> {
 
     @Override
-    public ArrayList<TopMenuTabEntity> parseData() {
+    public ArrayList<TabEntity> parseData() {
         return null;
     }
 }

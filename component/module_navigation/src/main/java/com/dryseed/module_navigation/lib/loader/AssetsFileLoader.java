@@ -1,7 +1,7 @@
 package com.dryseed.module_navigation.lib.loader;
 
 import android.content.res.AssetManager;
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 import com.easy.moduler.lib.okbus.BaseAppModuleApp;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class AssetsFileLoader<T> extends AbsLoader<T> {
     @Override
-    public ArrayList<TopMenuTabEntity> parseData() {
+    public ArrayList<TabEntity> parseData() {
         if (!(mOriginData instanceof String)) {
             return new ArrayList<>();
         }
@@ -26,8 +26,8 @@ public class AssetsFileLoader<T> extends AbsLoader<T> {
         return loadAssetsFile(fileName);
     }
 
-    private ArrayList<TopMenuTabEntity> loadAssetsFile(String fileName) {
-        ArrayList<TopMenuTabEntity> tabEntities = new ArrayList<>();
+    private ArrayList<TabEntity> loadAssetsFile(String fileName) {
+        ArrayList<TabEntity> tabEntities = new ArrayList<>();
         AssetManager assetManager = BaseAppModuleApp.getInstance().getAssets();
         InputStream is = null;
         BufferedReader br = null;
@@ -35,7 +35,7 @@ public class AssetsFileLoader<T> extends AbsLoader<T> {
             is = assetManager.open(fileName);
             br = new BufferedReader(new InputStreamReader(is));
 
-            Type type = new TypeToken<ArrayList<TopMenuTabEntity>>() {
+            Type type = new TypeToken<ArrayList<TabEntity>>() {
             }.getType();
             tabEntities = new Gson().fromJson(br, type);
         } catch (Exception e) {

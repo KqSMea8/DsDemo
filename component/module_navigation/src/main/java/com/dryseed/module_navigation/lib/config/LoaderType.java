@@ -1,5 +1,7 @@
 package com.dryseed.module_navigation.lib.config;
 
+import com.dryseed.module_navigation.lib.entity.TabEntity;
+
 /**
  * @author caiminming
  */
@@ -13,7 +15,7 @@ public enum LoaderType {
      */
     LOADER_TYPE_JSON(1, "Json"),
     /**
-     * List<{@link com.dryseed.module_navigation.lib.entity.TopMenuTabEntity}>
+     * List<{@link TabEntity}>
      */
     LOADER_TYPE_LIST(2, "List"),
     /**

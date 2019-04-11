@@ -43,12 +43,12 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.*;
 import com.dryseed.module_navigation.R;
+import com.dryseed.module_navigation.lib.adapter.IPagerAdapter;
 import com.easy.moduler.lib.utils.FloatUtil;
 import com.easy.moduler.lib.utils.LogUtils;
 
 @SuppressWarnings("unused")
-public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
-
+public abstract class TopMenuBasePagerSlidingTabStrip extends HorizontalScrollView {
     /**
      * 从ColorState中获取选中颜色
      */
@@ -251,21 +251,21 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
         }
     };
 
-    public AdvancedPagerSlidingTabStrip(Context context) {
+    public TopMenuBasePagerSlidingTabStrip(Context context) {
         this(context, null);
     }
 
-    public AdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs) {
+    public TopMenuBasePagerSlidingTabStrip(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public AdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyle) {
+    public TopMenuBasePagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init(context, attrs, defStyle, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public AdvancedPagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TopMenuBasePagerSlidingTabStrip(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -336,23 +336,16 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
      */
     public void notifyDataSetChanged() {
         LogUtils.d("AdvancedPagerSlidingTabStrip notifyDataSetChanged");
+
         mTabsContainer.removeAllViews();
         PagerAdapter adapter = mPager.getAdapter();
-        if (adapter == null) {
+        if (adapter == null || !(adapter instanceof IPagerAdapter)) {
             return;
         }
+
         mTabCount = adapter.getCount();
         for (int i = 0; i < mTabCount; i++) {
-            if (mIsCustomTab && mCustomTabProvider != null) {
-                View view = mCustomTabProvider.createTabView(i);
-                if (view != null) {
-                    addTab(i, view);
-                }
-            } else if (adapter instanceof IconTabProvider) {
-                addIconTab(i, ((IconTabProvider) adapter).getPageIconResId(i));
-            } else {
-                addTextTab(i, String.valueOf(adapter.getPageTitle(i)));
-            }
+            addCustomView(adapter, i);
         }
 
         addFooterView();
@@ -373,6 +366,8 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
             }
         });
     }
+
+    abstract void addCustomView(PagerAdapter adapter, int position);
 
     protected void addFooterView() {
 
@@ -1272,4 +1267,6 @@ public class AdvancedPagerSlidingTabStrip extends HorizontalScrollView {
             removeCallbacks(mResetScrollXRunnable);
         }
     }
+
+
 }

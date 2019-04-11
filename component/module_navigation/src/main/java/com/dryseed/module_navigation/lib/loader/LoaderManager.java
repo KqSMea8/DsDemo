@@ -14,7 +14,7 @@ public class LoaderManager {
     private Loader mLoader = new NullLoader();
 
     public LoaderManager() {
-        registerLoader(LoaderType.LOADER_TYPE_URL, new UrlLoader());
+        //registerLoader(LoaderType.LOADER_TYPE_URL, new UrlLoader());
         registerLoader(LoaderType.LOADER_TYPE_JSON, new JsonLoader());
         registerLoader(LoaderType.LOADER_TYPE_LIST, new ListLoader());
         registerLoader(LoaderType.LOADER_TYPE_LOCAL_FILE, new AssetsFileLoader());

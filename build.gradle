@@ -1,8 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
+    ext {
+        mavenRepo = [
+                'http://jfrog.cloud.qiyi.domain/iqiyi-maven-mcg/',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mcg-arch/',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mcg-qos/',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mbd-vertical/',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mcg-paopao-android',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mbd-android/',
+//                'http://maven.mbd.qiyi.domain/nexus/content/repositories/mbd-android-snapshot/',
+//                'http://jfrog.cloud.qiyi.domain/jcenter/',
+//                'http://jfrog.cloud.qiyi.domain/maven-google/',
+//                'http://jfrog.cloud.qiyi.domain/gradle-plugins/',
+//                'https://plugins.gradle.org/m2',
+        ]
+    }
+
     ext.kotlin_version = '1.2.71'
     repositories {
+        mavenRepo.each { mavenUrl ->
+            maven {
+                url mavenUrl
+            }
+        }
         google()
         jcenter()
     }
@@ -17,6 +39,11 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenRepo.each { mavenUrl ->
+            maven {
+                url mavenUrl
+            }
+        }
         google()
         jcenter()
     }

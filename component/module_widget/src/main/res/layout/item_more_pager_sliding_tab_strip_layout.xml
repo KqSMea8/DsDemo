@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="50dp"
-          android:layout_height="wrap_content"
-          android:lines="1"
-          android:gravity="left|center_vertical"
-          android:background="#00ffffff"
-          android:text="左滑查看更多"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="45dp"
+                android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/left_more_icon"
+            android:drawablePadding="2dp"
+            android:ellipsize="none"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="2dp"
+            android:singleLine="true"
+            android:text="左滑查看更多"
+            android:textColor="#66cccccc"
+            android:textSize="12dp" />
+</RelativeLayout>

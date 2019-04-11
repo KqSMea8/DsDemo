@@ -1,12 +1,13 @@
 package com.dryseed.module_navigation.lib;
 
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import com.dryseed.module_navigation.lib.adapter.TopMenuPagerAdapter;
+import com.dryseed.module_navigation.lib.adapter.IPagerAdapter;
 import com.dryseed.module_navigation.lib.config.LoaderType;
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 import com.dryseed.module_navigation.lib.loader.ILoaderListener;
 import com.dryseed.module_navigation.lib.loader.LoaderManager;
-import com.dryseed.module_navigation.lib.widget.AdvancedPagerSlidingTabStrip;
+import com.dryseed.module_navigation.lib.widget.TopMenuPagerSlidingTabStrip;
 
 import java.util.ArrayList;
 
@@ -15,13 +16,13 @@ import java.util.ArrayList;
  */
 public class TopMenuManager {
 
-    TopMenuPagerAdapter mFragmentPagerAdapter;
+    PagerAdapter mPagerAdapter;
 
     LoaderManager mLoaderManager;
 
     ViewPager mViewPager;
 
-    AdvancedPagerSlidingTabStrip mTabStrip;
+    TopMenuPagerSlidingTabStrip mTabStrip;
 
     public TopMenuManager() {
 
@@ -40,9 +41,9 @@ public class TopMenuManager {
         }
         mLoaderManager.processData(loaderType, data, new ILoaderListener() {
             @Override
-            public void onSuccess(ArrayList<TopMenuTabEntity> tabEntities) {
-                if (mFragmentPagerAdapter != null) {
-                    mFragmentPagerAdapter.setData(tabEntities);
+            public void onSuccess(ArrayList<TabEntity> tabEntities) {
+                if (mPagerAdapter != null && mPagerAdapter instanceof IPagerAdapter) {
+                    ((IPagerAdapter) mPagerAdapter).setData(tabEntities);
                 }
                 if (mTabStrip != null && mViewPager != null) {
                     mTabStrip.setViewPager(mViewPager);
@@ -56,8 +57,8 @@ public class TopMenuManager {
         });
     }
 
-    public void setAdapter(TopMenuPagerAdapter pagerAdapter) {
-        mFragmentPagerAdapter = pagerAdapter;
+    public void setAdapter(PagerAdapter pagerAdapter) {
+        mPagerAdapter = pagerAdapter;
     }
 
 
@@ -69,7 +70,7 @@ public class TopMenuManager {
         mViewPager = viewPager;
     }
 
-    public void setTabStrip(AdvancedPagerSlidingTabStrip tabStrip) {
+    public void setTabStrip(TopMenuPagerSlidingTabStrip tabStrip) {
         mTabStrip = tabStrip;
     }
 

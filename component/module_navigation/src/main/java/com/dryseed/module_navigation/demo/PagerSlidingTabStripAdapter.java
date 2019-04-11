@@ -3,12 +3,12 @@ package com.dryseed.module_navigation.demo;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import com.dryseed.module_navigation.lib.adapter.TopMenuPagerAdapter;
+import com.dryseed.module_navigation.lib.adapter.TopMenuFragmentStatePagerAdapter;
 
 /**
  * @author caiminming
  */
-public class PagerSlidingTabStripAdapter extends TopMenuPagerAdapter {
+public class PagerSlidingTabStripAdapter extends TopMenuFragmentStatePagerAdapter {
 
     public PagerSlidingTabStripAdapter(FragmentManager fm) {
         super(fm);

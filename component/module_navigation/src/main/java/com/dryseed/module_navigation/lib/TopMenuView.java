@@ -2,15 +2,17 @@ package com.dryseed.module_navigation.lib;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import com.dryseed.module_navigation.lib.adapter.TopMenuPagerAdapter;
+import com.dryseed.module_navigation.lib.adapter.IPagerAdapter;
 import com.dryseed.module_navigation.lib.config.LoaderType;
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 import com.dryseed.module_navigation.lib.loader.LoaderManager;
-import com.dryseed.module_navigation.lib.widget.AdvancedPagerSlidingTabStrip;
+import com.dryseed.module_navigation.lib.widget.TopMenuBasePagerSlidingTabStrip;
+import com.dryseed.module_navigation.lib.widget.TopMenuPagerSlidingTabStrip;
 
 import java.util.List;
 
@@ -19,11 +21,11 @@ import java.util.List;
  */
 public class TopMenuView extends LinearLayout {
 
-    private AdvancedPagerSlidingTabStrip mTabStrip;
+    private TopMenuPagerSlidingTabStrip mTabStrip;
 
     private ViewPager mViewPager;
 
-    private TopMenuPagerAdapter mPagerAdapter;
+    private PagerAdapter mPagerAdapter;
 
     private TopMenuManager mTopMenuManager;
 
@@ -54,8 +56,8 @@ public class TopMenuView extends LinearLayout {
         }
         for (int i = 0; i < childCount; i++) {
             View view = getChildAt(i);
-            if (view instanceof AdvancedPagerSlidingTabStrip) {
-                mTabStrip = (AdvancedPagerSlidingTabStrip) view;
+            if (view instanceof TopMenuPagerSlidingTabStrip) {
+                mTabStrip = (TopMenuPagerSlidingTabStrip) view;
             } else if (view instanceof ViewPager) {
                 mViewPager = (ViewPager) view;
             }
@@ -94,7 +96,7 @@ public class TopMenuView extends LinearLayout {
      *
      * @param tabEntityList
      */
-    public void setListData(List<TopMenuTabEntity> tabEntityList) {
+    public void setListData(List<TabEntity> tabEntityList) {
         mTopMenuManager.setData(LoaderType.LOADER_TYPE_LIST, tabEntityList);
     }
 
@@ -112,7 +114,10 @@ public class TopMenuView extends LinearLayout {
      *
      * @param adapter
      */
-    public void setAdapter(TopMenuPagerAdapter adapter) {
+    public void setAdapter(PagerAdapter adapter) {
+        if (!(adapter instanceof IPagerAdapter)) {
+            throw new RuntimeException("please make sure the adapter is instanceof IPagerAdapter !!!");
+        }
         mPagerAdapter = adapter;
         if (mViewPager != null && mTabStrip != null) {
             mTopMenuManager.setAdapter(mPagerAdapter);
@@ -120,7 +125,7 @@ public class TopMenuView extends LinearLayout {
         }
     }
 
-    public AdvancedPagerSlidingTabStrip getTabStrip() {
+    public TopMenuPagerSlidingTabStrip getTabStrip() {
         return mTabStrip;
     }
 

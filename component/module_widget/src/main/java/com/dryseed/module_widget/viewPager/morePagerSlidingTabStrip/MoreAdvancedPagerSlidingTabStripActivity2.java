@@ -1,6 +1,7 @@
 package com.dryseed.module_widget.viewPager.morePagerSlidingTabStrip;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -34,6 +35,13 @@ public class MoreAdvancedPagerSlidingTabStripActivity2 extends FragmentActivity 
         mAdapter = new PagerSlidingTabStripAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
         mTabStrip.setViewPager(mViewPager);
-        mViewPager.setCurrentItem(5);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mViewPager.setCurrentItem(mAdapter.getCount() - 1);
+                mTabStrip.resetMoreView(0);
+            }
+        }, 1000);
     }
 }

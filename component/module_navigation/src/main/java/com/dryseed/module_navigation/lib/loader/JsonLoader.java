@@ -1,6 +1,6 @@
 package com.dryseed.module_navigation.lib.loader;
 
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 import com.dryseed.module_navigation.lib.utils.GsonUtils;
 import com.google.gson.reflect.TypeToken;
 
@@ -12,15 +12,15 @@ import java.util.ArrayList;
  */
 public class JsonLoader<T> extends AbsLoader<T> {
     @Override
-    public ArrayList<TopMenuTabEntity> parseData() {
+    public ArrayList<TabEntity> parseData() {
         if (!(mOriginData instanceof String)) {
             return new ArrayList<>();
         }
 
         String jsonArrayStr = (String) mOriginData;
-        Type listType = new TypeToken<ArrayList<TopMenuTabEntity>>() {
+        Type listType = new TypeToken<ArrayList<TabEntity>>() {
         }.getType();
-        ArrayList<TopMenuTabEntity> list = GsonUtils.fromJson(jsonArrayStr, listType);
+        ArrayList<TabEntity> list = GsonUtils.fromJson(jsonArrayStr, listType);
         return list;
     }
 }

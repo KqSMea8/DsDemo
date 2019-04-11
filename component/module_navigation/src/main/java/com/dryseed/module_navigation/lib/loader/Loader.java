@@ -1,6 +1,6 @@
 package com.dryseed.module_navigation.lib.loader;
 
-import com.dryseed.module_navigation.lib.entity.TopMenuTabEntity;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 
 import java.util.ArrayList;
 
@@ -21,5 +21,5 @@ public interface Loader<T> {
      *
      * @return
      */
-    ArrayList<TopMenuTabEntity> parseData();
+    ArrayList<TabEntity> parseData();
 }

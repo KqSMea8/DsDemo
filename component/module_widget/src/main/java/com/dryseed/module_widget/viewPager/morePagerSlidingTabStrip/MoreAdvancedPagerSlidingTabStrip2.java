@@ -23,9 +23,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.blankj.utilcode.util.ToastUtils;
 import com.dryseed.module_widget.R;
@@ -35,13 +35,42 @@ import com.easy.moduler.lib.utils.DPIUtil;
 @SuppressWarnings("unused")
 public class MoreAdvancedPagerSlidingTabStrip2 extends AdvancedPagerSlidingTabStrip {
 
-    private TextView mFooterView;
-    float mLastX = 0;
-    float deltaX = 0;
-    boolean canJump;
-    boolean canDrag;
-    private static final int DRAG_JUMP_MAX_DISTANCE = 200;
-    private static final int DRAG_CAN_JUMP_DISTANCE = 100;
+    /**
+     * 尾部View
+     */
+    protected View mFooterView;
+    /**
+     * 尾部文字
+     */
+    protected TextView mFooterTextView;
+    /**
+     * 拖拽最大距离
+     */
+    private static final int DRAG_JUMP_MAX_DISTANCE = DPIUtil.dip2px(43);
+    /**
+     * 可以跳转的拖拽最小距离
+     */
+    private static final int DRAG_CAN_JUMP_DISTANCE = DRAG_JUMP_MAX_DISTANCE / 2;
+    /**
+     * 上一次X
+     */
+    private float mLastX = 0;
+    /**
+     * X偏移量
+     */
+    private float deltaX = 0;
+    /**
+     * 是否能跳转
+     */
+    private boolean canJump;
+    /**
+     * 是否能拖拽
+     */
+    private boolean canDrag;
+    /**
+     * 是否开启Footer
+     */
+    private boolean enableFooter;
 
     public MoreAdvancedPagerSlidingTabStrip2(Context context) {
         this(context, null);
@@ -62,8 +91,9 @@ public class MoreAdvancedPagerSlidingTabStrip2 extends AdvancedPagerSlidingTabSt
 
     @Override
     protected void addFooterView() {
-        mFooterView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_more_pager_sliding_tab_strip_layout, null);
-        mTabsContainer.addView(mFooterView, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mFooterView = LayoutInflater.from(getContext()).inflate(R.layout.item_more_pager_sliding_tab_strip_layout, null);
+        mFooterTextView = mFooterView.findViewById(R.id.text);
+        mTabsContainer.addView(mFooterView);
     }
 
     @Override
@@ -93,9 +123,9 @@ public class MoreAdvancedPagerSlidingTabStrip2 extends AdvancedPagerSlidingTabSt
                         deltaX = DRAG_JUMP_MAX_DISTANCE;
                     }
                     if (deltaX > DRAG_CAN_JUMP_DISTANCE) {
-                        mFooterView.setText("松手查看更多");
+                        mFooterTextView.setText("松手查看更多");
                     } else {
-                        mFooterView.setText("左滑查看更多");
+                        mFooterTextView.setText("左滑查看更多");
                     }
 
                     Log.d("MMM", "111 maxScroll : " + (getChildAt(0).getMeasuredWidth() - getMeasuredWidth()) +
@@ -109,7 +139,7 @@ public class MoreAdvancedPagerSlidingTabStrip2 extends AdvancedPagerSlidingTabSt
                 if (canDrag && deltaX >= DRAG_CAN_JUMP_DISTANCE) {
                     canJump = true;
                     jump();
-                    mFooterView.setText("左滑查看更多");
+                    mFooterTextView.setText("左滑查看更多");
                 }
                 resetMoreView(0);
                 mLastX = 0;
@@ -133,10 +163,10 @@ public class MoreAdvancedPagerSlidingTabStrip2 extends AdvancedPagerSlidingTabSt
         return super.onTouchEvent(e);
     }
 
-    private void resetMoreView(int padding) {
-        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(padding + DPIUtil.dip2px(50), ViewGroup.LayoutParams.WRAP_CONTENT);
+    public void resetMoreView(int padding) {
+        Log.d("MMM", "====> resetMoreView : " + padding);
+        LinearLayout.LayoutParams rlp = new LinearLayout.LayoutParams(padding + DPIUtil.dip2px(45), ViewGroup.LayoutParams.WRAP_CONTENT);
         mFooterView.setLayoutParams(rlp);
-        //mFooterView.setPadding(0, 0, padding, 0);
     }
 
     private void jump() {

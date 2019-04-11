@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.dryseed.module_navigation.R;
 import com.dryseed.module_navigation.lib.TopMenuView;
+import com.dryseed.module_navigation.lib.entity.TabEntity;
 import com.easy.moduler.lib.BaseActivity;
+
+import java.util.List;
 
 /**
  * @author caiminming
@@ -24,57 +27,22 @@ public class NavigationActivity extends BaseActivity {
         mTopMenuView.setAdapter(new PagerSlidingTabStripAdapter(getSupportFragmentManager()));
 
         //step2 : set data
-        /*{
-            //1. list data
-            ArrayList<TopMenuTabEntity> list = new ArrayList<>();
-            for (int i = 0; i < 10; i++) {
-                TopMenuTabEntity entity = new TopMenuTabEntity();
-                entity.setId(i + "");
-                entity.setTitle("tab " + i);
-                list.add(entity);
-            }
-            mTopMenuView.setListData(list);
-        }*/
 
+        {
+            //1. list data
+            List<TabEntity> list = DataProvider.getListData();
+            mTopMenuView.setListData(list);
+        }
         /*{
             //2. json data
-            String jsonArrayStr =
-                    "[\n" +
-                            "  {\n" +
-                            "    \"id\": \"111\",\n" +
-                            "    \"title\": \"title1\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"222\",\n" +
-                            "    \"title\": \"title2\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"333\",\n" +
-                            "    \"title\": \"title3\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"444\",\n" +
-                            "    \"title\": \"title4\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"555\",\n" +
-                            "    \"title\": \"title5\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"666\",\n" +
-                            "    \"title\": \"title6\"\n" +
-                            "  },\n" +
-                            "  {\n" +
-                            "    \"id\": \"777\",\n" +
-                            "    \"title\": \"title7\"\n" +
-                            "  }\n" +
-                            "  \n" +
-                            "]";
+            String jsonArrayStr = DataProvider.getJsonData();
             mTopMenuView.setJsonData(jsonArrayStr);
         }*/
 
-        {
-            mTopMenuView.setAssetsFileData("data.json");
-        }
+        /*{
+            //3. assets file data
+            String assetsFileName = "data.json";
+            mTopMenuView.setAssetsFileData(assetsFileName);
+        }*/
     }
 }
